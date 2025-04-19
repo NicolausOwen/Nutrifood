@@ -8,6 +8,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
+    <?php
+    // Define the API endpoint here in PHP, so it's not visible in client-side code
+    $apiEndpoint = '/api/tickets/validate';
+    ?>
+
     <div class="max-w-3xl mx-auto p-5 text-center">
         <h1 class="text-2xl font-bold mb-5">Tiket Scanner</h1>
 
@@ -52,6 +57,12 @@
                 Hasil pemindaian akan muncul di sini
             </div>
 
+            <div id="manualInput" class="w-full max-w-lg flex flex-col gap-3 mt-5 bg-white p-4 border border-gray-300 rounded-lg shadow-sm">
+                <h3 class="text-lg font-semibold text-gray-800 text-left">Masukkan Data Barcode Secara Manual:</h3>
+                <input type="text" id="manual-barcode" placeholder="Masukkan data barcode teks" class="p-2 border border-gray-300 rounded">
+                <button id="process-manual" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded transition-colors">Proses</button>
+            </div>
+
             <div id="history" class="w-full max-w-lg bg-white p-4 border border-gray-300 rounded-lg shadow-sm mt-5">
                 <h3 class="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-2 text-left">Riwayat Pemindaian</h3>
                 <ul id="history-list" class="list-none p-0 m-0 max-h-48 overflow-y-auto text-left"></ul>
@@ -66,6 +77,7 @@
         let isScanning = false;
         let scanHistory = [];
         let activeTarget = 'checkup';
+        const apiEndpoint = "<?php echo $apiEndpoint; ?>";
 
         const startButton = document.getElementById('start-button');
         const stopButton = document.getElementById('stop-button');
@@ -213,8 +225,10 @@
         }
 
         function onScanSuccess(decodedText, decodedResult) {
+            // Add to history
             addToScanHistory(decodedText, decodedResult.format?.formatName || "Unknown");
 
+            // Process the barcode and validate the ticket
             validateTicket(decodedText);
 
             try {
@@ -226,8 +240,6 @@
         }
 
         function validateTicket(qrCode) {
-            const apiUrl = '/api/tickets/validate';
-
             document.getElementById('result').innerHTML = `
                 <div class="flex items-center justify-center p-4">
                     <div class="w-6 h-6 border-2 border-t-2 border-blue-500 rounded-full animate-spin mr-2"></div>
@@ -239,8 +251,7 @@
                 qr_code: qrCode,
                 target: activeTarget
             };
-
-            fetch(apiUrl, {
+            fetch(apiEndpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
