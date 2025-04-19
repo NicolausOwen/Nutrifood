@@ -8,11 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
-    <?php
-    // Define the API endpoint here in PHP, so it's not visible in client-side code
-    $apiEndpoint = '/api/tickets/validate';
-    ?>
-
     <div class="max-w-3xl mx-auto p-5 text-center">
         <h1 class="text-2xl font-bold mb-5">Tiket Scanner</h1>
 
@@ -77,7 +72,7 @@
         let isScanning = false;
         let scanHistory = [];
         let activeTarget = 'checkup';
-        const apiEndpoint = "<?php echo $apiEndpoint; ?>";
+        const apiEndpoint = "/api/tickets/validate";
 
         const startButton = document.getElementById('start-button');
         const stopButton = document.getElementById('stop-button');
@@ -166,8 +161,7 @@
             html5QrCode.start(
                 selectedCameraId,
                 config,
-                onScanSuccess,
-                onScanFailure
+                onScanSuccess
             )
             .then(() => {
                 isScanning = true;
