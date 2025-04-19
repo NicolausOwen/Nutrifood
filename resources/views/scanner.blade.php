@@ -52,12 +52,6 @@
                 Hasil pemindaian akan muncul di sini
             </div>
 
-            <div id="manualInput" class="w-full max-w-lg flex flex-col gap-3 mt-5 bg-white p-4 border border-gray-300 rounded-lg shadow-sm">
-                <h3 class="text-lg font-semibold text-gray-800 text-left">Masukkan Data Barcode Secara Manual:</h3>
-                <input type="text" id="manual-barcode" placeholder="Masukkan data barcode teks" class="p-2 border border-gray-300 rounded">
-                <button id="process-manual" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded transition-colors">Proses</button>
-            </div>
-
             <div id="history" class="w-full max-w-lg bg-white p-4 border border-gray-300 rounded-lg shadow-sm mt-5">
                 <h3 class="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-2 text-left">Riwayat Pemindaian</h3>
                 <ul id="history-list" class="list-none p-0 m-0 max-h-48 overflow-y-auto text-left"></ul>
@@ -219,10 +213,8 @@
         }
 
         function onScanSuccess(decodedText, decodedResult) {
-            // Add to history
+            stopScanner();
             addToScanHistory(decodedText, decodedResult.format?.formatName || "Unknown");
-
-            // Process the barcode and validate the ticket
             validateTicket(decodedText);
 
             try {
@@ -287,8 +279,6 @@
                         <div class="grid grid-cols-2 gap-2 mt-2">
                             <div class="font-semibold">ID Tiket:</div>
                             <div>${data.ticket.id || '-'}</div>
-                            <div class="font-semibold">User ID:</div>
-                            <div>${data.ticket.id_user || '-'}</div>
                             <div class="font-semibold">Checkup:</div>
                             <div>${data.ticket.checkup ? '✅ Sudah' : '❌ Belum'}</div>
                             <div class="font-semibold">Makan:</div>

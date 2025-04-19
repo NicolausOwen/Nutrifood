@@ -43,7 +43,7 @@ class TicketController extends Controller
         $qrCodeString = Str::uuid()->toString();
 
         $ticket = Ticket::create([
-            'id' => $orderid,
+            'order_id' => $orderid,
             'id_user' => $request->id_user,
             'checkup' => false,
             'makan' => false,

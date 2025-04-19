@@ -11,6 +11,9 @@ class Ticket extends Model
 
     public $timestamps = false;
 
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     protected $fillable = [
         'id',
         'id_user',
