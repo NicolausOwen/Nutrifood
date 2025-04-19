@@ -51,7 +51,7 @@ class TicketController extends Controller
             'qr_code' => $qrCodeString,
         ]);
 
-        return response()->json(['tickets' => $ticket]);
+        return response()->json(['tickets' => $ticket, 'qr' => 'https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=' . $qrCodeString]);
     }
 
     public function show($id)
@@ -140,13 +140,5 @@ class TicketController extends Controller
     {
         $tickets = Ticket::where('id_user', Auth::id())->get();
         return view('tickets.my-tickets', compact('tickets'));
-    }
-
-    public function generateQrCode($id)
-    {
-        $ticket = Ticket::findOrFail($id);
-        $qrCode = QrCode::size(300)->generate($ticket->qr_code);
-
-        return view('tickets.qrcode', compact('ticket', 'qrCode'));
     }
 }

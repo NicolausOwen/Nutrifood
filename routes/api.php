@@ -13,5 +13,4 @@ Route::prefix('tickets')->name('api.tickets.')->group(function () {
 
     Route::post('/validate', [TicketController::class, 'validateTicket'])->name('validate');
     Route::get('/user/my-tickets', [TicketController::class, 'myTickets'])->name('my-tickets');
-    Route::get('/{id}/qr-code', [TicketController::class, 'generateQrCode'])->name('qr-code');
 });
