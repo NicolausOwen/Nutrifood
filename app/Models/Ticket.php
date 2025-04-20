@@ -10,10 +10,8 @@ class Ticket extends Model
     use HasFactory;
 
     public $timestamps = false;
-
     protected $keyType = 'string';
     public $incrementing = false;
-
     protected $fillable = [
         'id',
         'id_user',
@@ -22,4 +20,9 @@ class Ticket extends Model
         'used',
         'qr_code',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }
