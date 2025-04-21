@@ -43,13 +43,15 @@ class TicketController extends Controller
         $qrCodeString = Str::uuid()->toString();
 
         $ticket = Ticket::create([
-            'order_id' => $orderid,
+            'id' => $orderid,
             'id_user' => $request->id_user,
             'checkup' => false,
             'makan' => false,
             'used' => false,
             'qr_code' => $qrCodeString,
         ]);
+
+        app(EmailController::class)->sendEmail($ticket);
 
         return response()->json(['tickets' => $ticket, 'qr' => 'https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=' . $qrCodeString]);
     }
