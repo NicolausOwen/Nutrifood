@@ -13,6 +13,7 @@ Route::get('/scanner', function () {
 
 Route::prefix('tickets')->name('tickets.')->group(function () {
     Route::get('/', [TicketController::class, 'index'])->name('index');
-    Route::get('/', [TicketController::class, 'index'])->name('index');
+    Route::get('/create', [TicketController::class, 'create'])->name('create');
+    Route::post('/', [TicketController::class, 'store'])->name('store');
     Route::get('/{id}', [TicketController::class, 'show'])->name('show');
 });

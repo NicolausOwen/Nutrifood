@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Ticket extends Model
 {
     use HasFactory;
-
+    protected $primaryKey = 'id';
     public $timestamps = false;
     protected $keyType = 'string';
     public $incrementing = false;

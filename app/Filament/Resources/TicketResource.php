@@ -85,7 +85,7 @@ class TicketResource extends Resource
         return [
             'index' => Pages\ListTickets::route('/'),
             'create' => Pages\CreateTicket::route('/create'),
-            // 'edit' => Pages\EditTicket::route('/{id}/edit'),
+            'edit' => Pages\EditTicket::route('/{record}/edit'),
         ];
     }
 }
