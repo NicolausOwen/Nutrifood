@@ -20,7 +20,7 @@ class PaymentController extends Controller
             ], 400);
         }
         $validator = Validator::make($request->all(), [
-            'ticket_id' => 'required|exists:tickets,id',
+            'user_id' => 'required|exists:users,id',
             'payment_proof' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ]);
 
@@ -34,7 +34,7 @@ class PaymentController extends Controller
         ->first();
 
         if ($lastPayment) {
-            $lastNumber = intval(str_replace('Payment-', '', $lastPayment->ticket_id));
+            $lastNumber = intval(str_replace('Payment-', '', $lastPayment->id));
             $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
         } else {
             $newNumber = '0001';
@@ -65,7 +65,7 @@ class PaymentController extends Controller
 
             $payment = Payment::create([
                 'id' => $paymentid,
-                'ticket_id' => $request->ticket_id,
+                'user_id' => $request->user_id,
                 'payment_proof' => $path,
                 'created_at' => Carbon::now(),
             ]);

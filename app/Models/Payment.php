@@ -13,6 +13,7 @@ class Payment extends Model
 
     protected $fillable = [
         'id',
+        'user_id',
         'ticket_id',
         'payment_proof',
         'created_at',
