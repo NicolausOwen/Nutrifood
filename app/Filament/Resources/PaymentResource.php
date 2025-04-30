@@ -7,8 +7,11 @@ use Filament\Tables;
 use App\Models\Payment;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Support\Carbon;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
+use Illuminate\Support\Facades\Http;
+use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PaymentResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -82,7 +85,39 @@ class PaymentResource extends Resource
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
                     ->action(function (Payment $record) {
-                        $record->update(['verification_payment' => 'True']);
+
+                        try {
+                            $ticketController = app(\App\Http\Controllers\Api\TicketController::class);
+
+                            $request = new \Illuminate\Http\Request(['id_user' => $record->user_id]);
+
+                            $response = $ticketController->store($request);
+
+                            $responseData = $response->getData();
+
+                            if (isset($responseData->tickets->id)) {
+                                $record->update(['verification_payment' => 'True']);
+                                $record->update(['verification_at' => Carbon::now()]);
+                                $record->update(['ticket_id' => $responseData->tickets->id]);
+                                Notification::make()
+                                    ->title('Berhasil')
+                                    ->body('Ticket berhasil dibuat: ' . $responseData->tickets->id)
+                                    ->success()
+                                    ->send();
+                            } else {
+                                Notification::make()
+                                    ->title('Gagal')
+                                    ->body('Gagal membuat ticket.')
+                                    ->danger()
+                                    ->send();
+                            }
+                        } catch (\Exception $e) {
+                            Notification::make()
+                                ->title('Error')
+                                ->body('Error: ' . $e->getMessage())
+                                ->danger()
+                                ->send();
+                        }
                     })
                     ->requiresConfirmation()
                     ->hidden(fn (Payment $record): bool => $record->verification_payment !== "False")
