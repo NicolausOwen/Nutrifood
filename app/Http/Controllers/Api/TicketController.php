@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Ticket;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Validator;
@@ -27,7 +28,20 @@ class TicketController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $orderid = "Ticket-" . substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), -5);
+        $lastTicket = DB::table('tickets')
+        ->select('id')
+        ->orderByDesc('id')
+        ->first();
+
+        if ($lastTicket) {
+            $lastNumber = intval(str_replace('Ticket-', '', $lastTicket->id));
+            $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
+        } else {
+            $newNumber = '0001';
+        }
+
+        $orderid = "Ticket-" . $newNumber;
+
         $qrCodeString = Str::uuid()->toString();
 
         $ticket = Ticket::create([
