@@ -29,7 +29,7 @@ class SendEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Nutrihub Ticket',
+            subject: 'Hilo Sarcopenia Ticket',
         );
     }
 
