@@ -3,7 +3,9 @@
         <!-- Header dan Scanner -->
         <div class="text-center">
             <h1 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Tiket Scanner</h1>
-            <div id="reader" class="w-full mx-auto border-2 border-primary-500 rounded-lg shadow-md overflow-hidden mb-4" style="height: 400px;"></div>
+            <div id="reader"
+                class="w-full mx-auto border-2 border-primary-500 rounded-lg shadow-md overflow-hidden mb-4"
+                style="height: 400px;"></div>
         </div>
 
         <!-- Main Card Container -->
@@ -11,16 +13,20 @@
             <div class="p-6 space-y-6">
                 <!-- Scanner Controls -->
                 <div class="flex flex-wrap justify-center gap-3">
-                    <button id="start-button" class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-primary-600 hover:bg-primary-500 text-white">
+                    <button id="start-button"
+                        class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-primary-600 hover:bg-primary-500 text-white">
                         <span class="fi-btn-label">Mulai Pemindaian</span>
                     </button>
-                    <button id="stop-button" disabled class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-gray-500 text-white cursor-not-allowed">
+                    <button id="stop-button" disabled
+                        class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-gray-500 text-white cursor-not-allowed">
                         <span class="fi-btn-label">Hentikan Pemindaian</span>
                     </button>
-                    <button id="switch-camera" class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-gray-600 hover:bg-gray-500 text-white">
+                    <button id="switch-camera"
+                        class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-gray-600 hover:bg-gray-500 text-white">
                         <span class="fi-btn-label">Ganti Kamera</span>
                     </button>
-                    <button id="clear-history" class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-danger-600 hover:bg-danger-500 text-white">
+                    <button id="clear-history"
+                        class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-danger-600 hover:bg-danger-500 text-white">
                         <span class="fi-btn-label">Hapus Riwayat</span>
                     </button>
                 </div>
@@ -28,43 +34,52 @@
                 <!-- Validation Target -->
                 <x-filament::card>
                     <div class="p-4 space-y-3">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-white pb-2 border-b border-gray-200 dark:border-gray-700">
+                        <h3
+                            class="text-lg font-medium text-gray-900 dark:text-white pb-2 border-b border-gray-200 dark:border-gray-700">
                             Pilih Target Validasi
                         </h3>
                         <div class="flex flex-wrap justify-center gap-2">
-                            <button id="validate-checkup" class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-success-600 hover:bg-success-500 text-white ring-2 ring-primary-500">
+                            <button id="validate-checkup"
+                                class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-success-600 hover:bg-success-500 text-white ring-2 ring-primary-500">
                                 <span class="fi-btn-label">Checkup</span>
                             </button>
-                            <button id="validate-makan" class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-warning-600 hover:bg-warning-500 text-white">
+                            <button id="validate-makan"
+                                class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-warning-600 hover:bg-warning-500 text-white">
                                 <span class="fi-btn-label">Makan</span>
                             </button>
-                            <button id="validate-used" class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white">
+                            <button id="validate-masuk"
+                                class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white">
                                 <span class="fi-btn-label">Used</span>
                             </button>
                         </div>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                            Target aktif: <span id="active-target" class="font-medium text-primary-600 dark:text-primary-400">checkup</span>
+                            Target aktif: <span id="active-target"
+                                class="font-medium text-primary-600 dark:text-primary-400">checkup</span>
                         </p>
                     </div>
                 </x-filament::card>
 
                 <!-- Settings Section -->
                 <div class="space-y-3">
-                    <button id="settings-toggle" class="fi-btn fi-btn-size-md w-full relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-warning-600 hover:bg-warning-500 text-white">
+                    <button id="settings-toggle"
+                        class="fi-btn fi-btn-size-md w-full relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-warning-600 hover:bg-warning-500 text-white">
                         <span class="fi-btn-label">Pengaturan Scanner ⚙️</span>
                     </button>
 
                     <div id="settings-panel" class="hidden">
                         <x-filament::card>
                             <div class="p-4 space-y-3">
-                                <h3 class="text-lg font-medium text-gray-900 dark:text-white pb-2 border-b border-gray-200 dark:border-gray-700">
+                                <h3
+                                    class="text-lg font-medium text-gray-900 dark:text-white pb-2 border-b border-gray-200 dark:border-gray-700">
                                     Pengaturan Scanner
                                 </h3>
                                 <div class="space-y-1">
-                                    <label for="camera-select" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                    <label for="camera-select"
+                                        class="text-sm font-medium text-gray-700 dark:text-gray-300">
                                         Pilih Kamera
                                     </label>
-                                    <select id="camera-select" class="fi-select-input block w-full transition duration-75 rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:opacity-70 text-sm">
+                                    <select id="camera-select"
+                                        class="fi-select-input block w-full transition duration-75 rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:opacity-70 text-sm">
                                         <!-- Camera options will be populated by JavaScript -->
                                     </select>
                                 </div>
@@ -83,10 +98,12 @@
                 <!-- Scan History -->
                 <x-filament::card>
                     <div class="p-4 space-y-3">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-white pb-2 border-b border-gray-200 dark:border-gray-700">
+                        <h3
+                            class="text-lg font-medium text-gray-900 dark:text-white pb-2 border-b border-gray-200 dark:border-gray-700">
                             Riwayat Pemindaian
                         </h3>
-                        <ul id="history-list" class="divide-y divide-gray-200 dark:divide-gray-700 max-h-64 overflow-y-auto text-sm">
+                        <ul id="history-list"
+                            class="divide-y divide-gray-200 dark:divide-gray-700 max-h-64 overflow-y-auto text-sm">
                             <li class="py-2 text-gray-600 dark:text-gray-400">Belum ada riwayat pemindaian</li>
                         </ul>
                     </div>
@@ -116,7 +133,7 @@
             const cameraSelect = document.getElementById('camera-select');
             const validateCheckupBtn = document.getElementById('validate-checkup');
             const validateMakanBtn = document.getElementById('validate-makan');
-            const validateUsedBtn = document.getElementById('validate-used');
+            const validateUsedBtn = document.getElementById('validate-masuk');
 
             // Event listeners
             startButton.addEventListener('click', startScanner);
@@ -126,7 +143,7 @@
             settingsToggleButton.addEventListener('click', toggleSettings);
             validateCheckupBtn.addEventListener('click', () => setActiveTarget('checkup'));
             validateMakanBtn.addEventListener('click', () => setActiveTarget('makan'));
-            validateUsedBtn.addEventListener('click', () => setActiveTarget('used'));
+            validateUsedBtn.addEventListener('click', () => setActiveTarget('masuk'));
 
             // Fungsi utama
             function setActiveTarget(target) {
@@ -188,28 +205,31 @@
 
                 const config = {
                     fps: 10,
-                    qrbox: { width: 500, height: 400 }
+                    qrbox: {
+                        width: 500,
+                        height: 400
+                    }
                 };
 
                 html5QrCode.start(
-                    selectedCameraId,
-                    config,
-                    onScanSuccess
-                )
-                .then(() => {
-                    isScanning = true;
-                    startButton.disabled = true;
-                    stopButton.disabled = false;
-                    startButton.classList.remove('bg-primary-600', 'hover:bg-primary-500');
-                    startButton.classList.add('bg-gray-500');
-                    stopButton.classList.remove('bg-gray-500');
-                    stopButton.classList.add('bg-danger-600', 'hover:bg-danger-500');
-                    document.getElementById('result').innerHTML = "Pemindaian sedang berjalan...";
-                })
-                .catch(err => {
-                    console.error("Error saat memulai scanner:", err);
-                    alert("Error saat memulai pemindaian: " + err);
-                })
+                        selectedCameraId,
+                        config,
+                        onScanSuccess
+                    )
+                    .then(() => {
+                        isScanning = true;
+                        startButton.disabled = true;
+                        stopButton.disabled = false;
+                        startButton.classList.remove('bg-primary-600', 'hover:bg-primary-500');
+                        startButton.classList.add('bg-gray-500');
+                        stopButton.classList.remove('bg-gray-500');
+                        stopButton.classList.add('bg-danger-600', 'hover:bg-danger-500');
+                        document.getElementById('result').innerHTML = "Pemindaian sedang berjalan...";
+                    })
+                    .catch(err => {
+                        console.error("Error saat memulai scanner:", err);
+                        alert("Error saat memulai pemindaian: " + err);
+                    })
             }
 
             function stopScanner() {
@@ -258,7 +278,7 @@
 
                 try {
                     new Audio("data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU").play();
-                } catch(e) {
+                } catch (e) {
                     console.error("Error playing sound:", e);
                 }
             }
@@ -278,22 +298,22 @@
                 };
 
                 fetch(apiEndpoint, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    },
-                    body: JSON.stringify(requestData)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    displayValidationResult(data, qrCode);
-                })
-                .catch(error => {
-                    console.error('Error validating ticket:', error);
-                    document.getElementById('result').innerHTML = `
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                        body: JSON.stringify(requestData)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        displayValidationResult(data, qrCode);
+                    })
+                    .catch(error => {
+                        console.error('Error validating ticket:', error);
+                        document.getElementById('result').innerHTML = `
                         <div class="p-4 bg-danger-100 border border-danger-400 text-danger-700 rounded mb-3">
                             <h3 class="font-bold">Error!</h3>
                             <p>Gagal menghubungi server: ${error.message}</p>
@@ -303,7 +323,7 @@
                             <code class="block bg-gray-100 p-2 rounded">${escapeHtml(qrCode)}</code>
                         </div>
                     `;
-                });
+                    });
             }
 
             function displayValidationResult(data, qrCode) {
@@ -325,7 +345,7 @@
                                 <div class="font-semibold">Makan:</div>
                                 <div>${data.ticket.makan ? '✅ Sudah' : '❌ Belum'}</div>
                                 <div class="font-semibold">Used:</div>
-                                <div>${data.ticket.used ? '✅ Sudah' : '❌ Belum'}</div>
+                                <div>${data.ticket.masuk ? '✅ Sudah' : '❌ Belum'}</div>
                             </div>
                         </div>
                     `;
@@ -385,9 +405,11 @@
 
                 scanHistory.forEach((item, index) => {
                     const li = document.createElement('li');
-                    li.className = "py-2 border-b border-gray-200 dark:border-gray-700 last:border-b-0 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700";
+                    li.className =
+                        "py-2 border-b border-gray-200 dark:border-gray-700 last:border-b-0 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700";
                     const time = item.timestamp.toLocaleTimeString();
-                    li.innerHTML = `<span class="font-semibold">${escapeHtml(item.code.substring(0, 20))}${item.code.length > 20 ? '...' : ''}</span> <span class="inline-block px-2 py-1 rounded-full bg-primary-500 text-white text-xs font-bold">${item.format}</span> <small class="text-gray-500 dark:text-gray-400">(${time})</small>`;
+                    li.innerHTML =
+                        `<span class="font-semibold">${escapeHtml(item.code.substring(0, 20))}${item.code.length > 20 ? '...' : ''}</span> <span class="inline-block px-2 py-1 rounded-full bg-primary-500 text-white text-xs font-bold">${item.format}</span> <small class="text-gray-500 dark:text-gray-400">(${time})</small>`;
                     li.title = item.code;
                     li.addEventListener('click', () => {
                         processBarcode(item.code, item.format);

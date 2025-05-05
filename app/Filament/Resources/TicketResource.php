@@ -32,7 +32,7 @@ class TicketResource extends Resource
                 Forms\Components\TextInput::make('makan')
                     ->numeric()
                     ->default(null),
-                Forms\Components\TextInput::make('used')
+                Forms\Components\TextInput::make('masuk')
                     ->numeric()
                     ->default(null),
                 Forms\Components\Textarea::make('qr_code')
@@ -56,7 +56,7 @@ class TicketResource extends Resource
                 Tables\Columns\TextColumn::make('makan')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('used')
+                Tables\Columns\TextColumn::make('masuk')
                     ->numeric()
                     ->sortable(),
             ])

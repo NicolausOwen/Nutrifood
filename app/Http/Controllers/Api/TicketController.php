@@ -29,9 +29,9 @@ class TicketController extends Controller
         }
 
         $lastTicket = DB::table('tickets')
-        ->select('id')
-        ->orderByDesc('id')
-        ->first();
+            ->select('id')
+            ->orderByDesc('id')
+            ->first();
 
         if ($lastTicket) {
             $lastNumber = intval(str_replace('Ticket-', '', $lastTicket->id));
@@ -49,7 +49,7 @@ class TicketController extends Controller
             'id_user' => $request->id_user,
             'checkup' => false,
             'makan' => false,
-            'used' => false,
+            'masuk' => false,
             'qr_code' => $qrCodeString,
         ]);
 
@@ -64,7 +64,7 @@ class TicketController extends Controller
             'id_user' => 'required|exists:users,id',
             'checkup' => 'required|boolean',
             'makan' => 'required|boolean',
-            'used' => 'required|boolean',
+            'masuk' => 'required|boolean',
         ]);
 
         if ($validator->fails()) {
@@ -107,7 +107,7 @@ class TicketController extends Controller
         if ($ticket->$target) {
             return response()->json([
                 'success' => false,
-                'message' => 'Ticket already used'
+                'message' => 'Ticket already masuk'
             ], 400);
         }
         $ticket->update([$target => true]);
