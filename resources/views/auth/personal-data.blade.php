@@ -87,7 +87,7 @@
         <!-- Exercise figure illustrations -->
         <div class="absolute top-0 right-0 transform rotate-[-30deg]">
           <img
-            src="{{ asset('images/excercise 2.png') }}"
+            src="{{ asset('images/excecise 1.png') }}"
             alt="Exercise Figure 1"
             class="w-48 sm:w-72 md:w-96 lg:w-96 opacity-95 left-panel-image-top exercise-image"
           />
@@ -97,7 +97,7 @@
           class="absolute bottom-0 left-0 transform translate-x-0 translate-y-0"
         >
           <img
-            src="{{ asset('images/excecise 1.png') }}"
+            src="{{ asset('images/excercise 2.png') }}"
             alt="Exercise Figure 2"
             class="w-44 sm:w-56 md:w-72 opacity-95 left-panel-image-bottom exercise-image"
           />
@@ -110,20 +110,20 @@
               <!-- Step 1 -->
               <li class="flex-1 text-center relative">
                 <div
-                  class="flex items-center justify-center w-6 h-6 mx-auto border-4 border-secondaryColor rounded-full z-10 bg-primaryColor"
+                  class="flex items-center justify-center w-6 h-6 mx-auto rounded-full z-10 bg-secondaryColor"
                 ></div>
                 <p class="mt-4">Account Info</p>
                 <div
-                  class="absolute top-3 left-1/2 w-full h-[6px] bg-white -z-10"
+                  class="absolute top-3 left-1/2 w-full h-[6px] bg-secondaryColor -z-10"
                 ></div>
               </li>
 
               <!-- Step 2 -->
               <li class="flex-1 text-center relative">
                 <div
-                  class="flex items-center justify-center w-6 h-6 mx-auto border-4 border-white rounded-full z-10 bg-primaryColor"
+                  class="flex items-center justify-center w-6 h-6 mx-auto border-4 border-secondaryColor rounded-full z-10 bg-primaryColor"
                 ></div>
-                <p class="mt-4 text-white">Personal Info</p>
+                <p class="mt-4 text-secondaryColor">Personal Info</p>
                 <div
                   class="absolute top-3 left-1/2 w-full h-[6px] bg-white -z-10"
                 ></div>
@@ -166,7 +166,7 @@
               class="relative w-48 sm:w-56 md:w-64 h-12 sm:h-16 flex items-center justify-center"
             >
               <img
-                src="{{ asset('images/logo.png') }}"
+                src="{{ asset('images/LOGO.png') }}"
                 alt="HiLo x HIMSI Logo"
                 class="w-full h-full object-contain"
                 style="
@@ -184,101 +184,121 @@
             <h2
               class="text-center text-blue-900 font-bold text-xl sm:text-2xl mb-6"
             >
-              Register
+              Personal Data
             </h2>
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('personaldatapost') }}">
 
-                @csrf
+              @csrf
               <!-- Email Input -->
               <div class="mb-4">
-                <label
-                  for="email"
-                  class="block text-blue-900 text-sm font-bold mb-1"
-                  >Email</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Example@email.com"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
-                />
-              </div>
-
-              <div class="mb-3">
-                <label
-                  for="password"
-                  class="block text-blue-900 text-sm font-bold mb-1"
-                  >Password</label
-                >
-                <div class="relative">
+                <!-- Full Name -->
+                <div class="mb-4">
+                  <label
+                    for="fullname"
+                    class="block text-blue-900 text-sm font-bold mb-1"
+                  >
+                    Nama Lengkap
+                  </label>
                   <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="at least 8 characters"
+                    type="text"
+                    id="fullname"
+                    placeholder="John Doe"
+                    name="name"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
                   />
-                  <span class="password-eye" onclick="togglePassword()">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path
-                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
-                      ></path>
-                      <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                  </span>
                 </div>
-              </div>
 
-              <div class="mb-3">
-                <label
-                  for="password"
-                  class="block text-blue-900 text-sm font-bold mb-1"
-                  >Confirm Password</label
-                >
-                <div class="relative">
+                <!-- umur -->
+                <div class="mb-4">
+                  <label
+                    for="umur"
+                    class="block text-blue-900 text-sm font-bold mb-1"
+                  >
+                    Umur
+                  </label>
                   <input
-                    type="password"
-                    id="confirm-password"
-                    name="password_confirmation"
-                    placeholder="re-type your password"
+                    type="number"
+                    id="umur"
+                    placeholder="21"
+                    name="umur"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
                   />
-                  <span class="password-eye" onclick="toggleConfirmPassword()">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path
-                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
-                      ></path>
-                      <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                  </span>
                 </div>
-                <p
-                  id="confirm-error"
-                  class="text-red-500 text-xs font-semibold mt-1 hidden"
-                >
-                  Passwords does not match
-                </p>
+
+                <div class="flex w-full gap-4">
+                  <!-- Gender -->
+                  <div class="mb-4 w-full">
+                    <label
+                      for="gender"
+                      class="block text-blue-900 text-sm font-bold mb-1"
+                    >
+                      Jenis Kelamin
+                    </label>
+                    <select
+                      id="gender"
+                      name="jenis_kelamin"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
+                    >
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="laki-laki">Laki-laki</option>
+                      <option value="perempuan">Perempuan</option>
+                    </select>
+                  </div>
+
+                  <!-- Shirt Size -->
+                  <div class="mb-4 w-full">
+                    <label
+                      for="shirt-size"
+                      class="block text-blue-900 text-sm font-bold mb-1"
+                    >
+                      Ukuran Baju
+                    </label>
+                    <select
+                      id="shirt-size"
+                      name="ukuran_baju"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
+                    >
+                      <option value="" disabled selected>Pilih</option>
+                      <option value="S">S</option>
+                      <option value="M">M</option>
+                      <option value="L">L</option>
+                      <option value="XL">XL</option>
+                      <option value="2XL">2XL</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label
+                    for="asal"
+                    class="block text-blue-900 text-sm font-bold mb-1"
+                  >
+                    Asal
+                  </label>
+                  <input
+                    type="text"
+                    id="asal"
+                    name="asal"
+                    placeholder="Palembang"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
+                  />
+                </div>
+
+                <div class="mb-4">
+                  <label
+                    for="komunitas"
+                    class="block text-blue-900 text-sm font-bold mb-1"
+                  >
+                    Nama Komunitas (Opsional)
+                  </label>
+                  <input
+                    type="text"
+                    id="komunitas"
+                    name="nama_komunitas"
+                    placeholder="Komunitas"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
+                  />
+                </div>
               </div>
 
               <!-- Buttons Container -->
@@ -289,7 +309,7 @@
                   type="submit"
                   class="flex-1 bg-[#203e99] text-white py-2 px-3 rounded-lg hover:bg-[#102b6b] transition-all duration-300 font-bold text-sm sm:text-base shadow-md hover:shadow-lg transform hover:-translate-y-0.5 border-2 border-[#102b6b]"
                 >
-                  Next
+                  Create Account
                 </button>
 
                 <a
@@ -300,10 +320,6 @@
                 </a>
               </div>
             </form>
-            <div class="text-center mt-10 font-bold">
-              Already Have an Account?
-              <a href="#" class="text-blue-900 text">Login</a>
-            </div>
           </div>
         </div>
 
@@ -312,7 +328,7 @@
           class="absolute bottom-0 left-0 transform -translate-x-1/4 translate-y-12 sm:translate-y-8 z-0"
         >
           <img
-            src="{{ asset('images/lineart-08.png') }}"
+            src="{{ asset('images/Lineart-08.png') }}"
             alt="Exercise Figure 3"
             class="w-48 sm:w-48 md:w-64 lg:w-80 h-auto opacity-95 sm:opacity-100 exercise-image right-panel-image mobile-bigger-image pointer-events-none"
           />
@@ -375,16 +391,10 @@
           const password = document.getElementById("password").value;
           const confirmPassword =
             document.getElementById("confirm-password").value;
-          const confirmError = document.getElementById("confirm-error");
-          const confirmInput = document.getElementById("confirm-password");
 
           if (password !== confirmPassword) {
-            e.preventDefault();
-            confirmError.classList.remove("hidden");
-            confirmInput.classList.add("border-red-500");
-          } else {
-            confirmError.classList.add("hidden");
-            confirmInput.classList.remove("border-red-500");
+            e.preventDefault(); // Mencegah form terkirim
+            alert("Password dan Konfirmasi Password tidak sama.");
           }
         });
     </script>

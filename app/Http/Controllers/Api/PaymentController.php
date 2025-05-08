@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PaymentController extends Controller
@@ -65,7 +66,7 @@ class PaymentController extends Controller
 
             $payment = Payment::create([
                 'id' => $paymentid,
-                'user_id' => $request->user_id,
+                'user_id' => Auth::id(),
                 'payment_proof' => $path,
                 'created_at' => Carbon::now(),
             ]);

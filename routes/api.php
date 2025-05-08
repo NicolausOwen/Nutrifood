@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TicketController;
 use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 // API Ticket routes
 Route::prefix('tickets')->name('api.tickets.')->group(function () {
@@ -13,9 +14,12 @@ Route::prefix('tickets')->name('api.tickets.')->group(function () {
     Route::delete('/{id}', [TicketController::class, 'destroy'])->name('destroy');
     Route::post('/validate', [TicketController::class, 'validateTicket'])->name('validate');
     Route::get('/user/my-tickets', [TicketController::class, 'myTickets'])->name('my-tickets');
+    Route::post('/register', [RegisteredUserController::class, 'store'])
+        ->name('register.post');
 });
 
+
 // Payment API Ticket routes
-Route::prefix('payment')->group(function () {
+Route::prefix('payment')->name('api.payment.')->group(function () {
     Route::post('/createpayment', [PaymentController::class, 'createPayment'])->name('createpayment');
 });

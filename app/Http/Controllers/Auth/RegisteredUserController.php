@@ -30,13 +30,13 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            // 'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            // 'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -45,6 +45,23 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('personal-data', absolute: false));
+    }
+
+    public function update_personal_info(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'umur' => ['required', 'integer'],
+            'jenis_kelamin' => ['required', 'string'],
+            'ukuran_baju' => ['required', 'string'],
+            'asal' => ['required', 'string'],
+        ]);
+
+        $user = User::findOrFail(Auth::id());
+
+        $user->update($request->all());
+
+        return redirect(route('personal-data', absolute: false));
     }
 }
