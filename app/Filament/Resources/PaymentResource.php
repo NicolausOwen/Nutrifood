@@ -88,12 +88,15 @@ class PaymentResource extends Resource
 
                         try {
                             $ticketController = app(\App\Http\Controllers\Api\TicketController::class);
+                            $emailController = app(\App\Http\Controllers\EmailController::class);
 
                             $request = new \Illuminate\Http\Request(['id_user' => $record->user_id]);
 
                             $response = $ticketController->store($request);
 
                             $responseData = $response->getData();
+
+                            $emailController->sendEmail($responseData->tickets);
 
                             if (isset($responseData->tickets->id)) {
                                 $record->update(['verification_payment' => 'True']);
