@@ -14,6 +14,12 @@ class PaymentController extends Controller
 {
     public function createPayment(Request $request)
     {
+        if(!Auth::id()){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Harap masuk atau buat akun terlebih dahulu!'
+            ], 405);
+        }
         if (!$request->hasFile('payment_proof')) {
             return response()->json([
                 'status' => 'error',
@@ -21,7 +27,6 @@ class PaymentController extends Controller
             ], 400);
         }
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|exists:users,id',
             'payment_proof' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ]);
 
