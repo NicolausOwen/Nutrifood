@@ -1,3 +1,89 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* FORGOT PASSWORD STYLE */
+/* Style untuk Logo HiLo StrongFest */
+/* Enhanced logo shadow effect */
+.logo-strongfest {
+    filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.12)) 
+           drop-shadow(0 8px 10px rgba(0, 0, 0, 0.16));
+}
+
+/* Enhanced gradient text effect for FIGHT SARCOPENIA */
+.fight-sarcopenia-text {
+    background: linear-gradient(90deg, #1a3a8f 30%, #5dc1b9 50%, #ccdb00 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Enhanced underline style */
+.fight-sarcopenia-text::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ccdb00 30%, #5dc1b9 50%, #1a3a8f 70%);
+    border-radius: 3px;
+}
+
+/* Enhanced button styles with better color gradients */
+.btn-reset {
+    background: linear-gradient(135deg, #2849ad 0%, #1a3a8f 100%);
+    border: 1px solid #102b6b;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+    background: linear-gradient(135deg, #304fb8 0%, #203e99 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-back {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    border: 1px solid #1a3a8f;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced card styling */
+.strongfest-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f7f7f7 100%);
+    border-left: 4px solid #1a3a8f;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+}
+
+.strongfest-card:nth-child(even) {
+    border-left: 4px solid #ccdb00;
+    background: linear-gradient(145deg, #f9f9f9 0%, #f3f3f3 100%);
+}
+
+/* Section backgrounds */
+.strongfest-section-light {
+    background: linear-gradient(170deg, #ffffff 0%, #f5f7fa 100%);
+}
+
+.strongfest-section-dark {
+    background: linear-gradient(170deg, #1f4199 0%, #152b69 100%);
+    color: white;
+}
+
+.strongfest-section-accent {
+    background: linear-gradient(170deg, #d9e54c 0%, #ccdb00 100%);
+}
