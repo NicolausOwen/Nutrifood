@@ -14,7 +14,7 @@ class PaymentController extends Controller
 {
     public function createPayment(Request $request)
     {
-        if(!Auth::id()){
+        if(!$request->user_id){
             return response()->json([
                 'status' => 'error',
                 'message' => 'Harap masuk atau buat akun terlebih dahulu!'
@@ -27,6 +27,7 @@ class PaymentController extends Controller
             ], 400);
         }
         $validator = Validator::make($request->all(), [
+            'user_id' => 'required|integer',
             'payment_proof' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ]);
 
@@ -71,7 +72,7 @@ class PaymentController extends Controller
 
             $payment = Payment::create([
                 'id' => $paymentid,
-                'user_id' => Auth::id(),
+                'user_id' => $request->user_id,
                 'payment_proof' => $path,
                 'created_at' => Carbon::now(),
             ]);
