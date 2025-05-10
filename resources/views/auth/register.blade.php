@@ -302,7 +302,7 @@
             </form>
             <div class="text-center mt-10 font-bold">
               Already Have an Account?
-              <a href="#" class="text-blue-900 text">Login</a>
+              <a href="/login" class="text-blue-900 text">Login</a>
             </div>
           </div>
         </div>
