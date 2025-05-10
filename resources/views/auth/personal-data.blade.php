@@ -186,7 +186,7 @@
             >
               Personal Data
             </h2>
-            <form method="POST" action="{{ route('personaldatapost') }}">
+            <form method="POST" action="{{ route('payment') }}">
 
               @csrf
               <!-- Email Input -->
