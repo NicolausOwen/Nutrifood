@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ProfileController;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,3 +31,5 @@ Route::fallback(function(){
 
     return view('404');
 })-> name('404');
+
+
