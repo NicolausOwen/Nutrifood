@@ -166,7 +166,7 @@
               class="relative w-48 sm:w-56 md:w-64 h-12 sm:h-16 flex items-center justify-center"
             >
               <img
-                src="{{ asset('images/logo.png') }}"
+                src="{{ asset('images/LOGO.png') }}"
                 alt="HiLo x HIMSI Logo"
                 class="w-full h-full object-contain"
                 style="
