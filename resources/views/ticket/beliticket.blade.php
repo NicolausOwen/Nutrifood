@@ -84,7 +84,7 @@
             <div class="ticket-card p-6">
                 <div class="text-center mb-6">
                     <div class="bg-blue-100 rounded-lg p-4 mb-4">
-                        <img src="images/basic.png" alt="Basic Ticket" class="w-32 h-32 mx-auto object-contain">
+                        <img src="{{ asset('images/basic.png') }}" alt="Basic Ticket" class="w-32 h-32 mx-auto object-contain">
                         <div class="text-blue-600 font-semibold mt-2">Basic Ticket</div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
             <div class="ticket-card p-6">
                 <div class="text-center mb-6">
                     <div class="bg-blue-100 rounded-lg p-4 mb-4">
-                        <img src="images/basic.png" alt="Basic Ticket" class="w-32 h-32 mx-auto object-contain">
+                        <img src="{{ asset('images/basic.png') }}" alt="Basic Ticket" class="w-32 h-32 mx-auto object-contain">
                         <div class="text-blue-600 font-semibold mt-2">Basic Ticket</div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
     <!-- Footer -->
     @include('layouts.footer')
     <script>
-        const API_BASE_URL = 'http://127.0.0.1:8000/api';
+        const API_BASE_URL = 'https://hilo-sarcopenia.ddns.net/api';
 
         async function checkTicketStock(type) {
             try {
