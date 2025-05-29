@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\PaymentResource\Pages;
+namespace App\Filament\Resources\OrderResource\Pages;
 
-use App\Filament\Resources\PaymentResource;
+use App\Filament\Resources\OrderResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditPayment extends EditRecord
+class EditOrder extends EditRecord
 {
-    protected static string $resource = PaymentResource::class;
+    protected static string $resource = OrderResource::class;
 
     protected function getHeaderActions(): array
     {

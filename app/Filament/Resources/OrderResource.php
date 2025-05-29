@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Payment;
+use App\Models\Order;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Carbon;
@@ -13,13 +13,13 @@ use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Http;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\PaymentResource\Pages;
+use App\Filament\Resources\OrderResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\PaymentResource\RelationManagers;
+use App\Filament\Resources\OrderResource\RelationManagers;
 
-class PaymentResource extends Resource
+class OrderResource extends Resource
 {
-    protected static ?string $model = Payment::class;
+    protected static ?string $model = Order::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -30,10 +30,8 @@ class PaymentResource extends Resource
                 Forms\Components\TextInput::make('ticket_id')
                     ->required()
                     ->maxLength(50),
-                Forms\Components\Textarea::make('payment_proof')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('verification_payment'),
-                Forms\Components\DateTimePicker::make('verification_at'),
+                Forms\Components\TextInput::make('type')
+                    ->required(),
             ]);
     }
 
@@ -42,15 +40,18 @@ class PaymentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')
-                    ->label('Payment ID')
+                    ->label('Order ID')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('ticket_id')
                     ->label('Ticket ID')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->label('Type')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('verification_payment')
                     ->label('Status')
                     ->badge()
-                    ->getStateUsing(function (Payment $record): string {
+                    ->getStateUsing(function (Order $record): string {
                         $items = $record->verification_payment;
 
                         if($items === "True") {
@@ -75,21 +76,16 @@ class PaymentResource extends Resource
                 //
             ])
             ->actions([
-                Action::make('View Payment Proof')
-                    ->url(fn (Payment $record): string => env('APP_URL').'/storage'. '/'.$record->payment_proof)
-                    ->icon('heroicon-o-arrow-top-right-on-square')
-                    ->hidden(fn (Payment $record): bool => $record->verification_payment !== "False")
-                    ->openUrlInNewTab(),
-                Action::make('Confirm Payment')
+                Action::make('Confirm Order')
                     ->button()
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
-                    ->action(function (Payment $record) {
+                    ->action(function (Order $record) {
 
                         try {
                             $ticketController = app(\App\Http\Controllers\Api\TicketController::class);
 
-                            $request = new \Illuminate\Http\Request(['id_user' => $record->user_id]);
+                            $request = new \Illuminate\Http\Request(['id_user' => $record->user_id, 'type' => $record->type]);
 
                             $response = $ticketController->store($request);
 
@@ -120,8 +116,8 @@ class PaymentResource extends Resource
                         }
                     })
                     ->requiresConfirmation()
-                    ->hidden(fn (Payment $record): bool => $record->verification_payment !== "False")
-                    ->successNotificationTitle('Payment marked as Confirmed'),
+                    ->hidden(fn (Order $record): bool => $record->verification_payment !== "False")
+                    ->successNotificationTitle('Order marked as Confirmed'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -140,7 +136,7 @@ class PaymentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPayments::route('/'),
+            'index' => Pages\ListOrders::route('/'),
             //'create' => Pages\CreatePayment::route('/create'),
             //'edit' => Pages\EditPayment::route('/{record}/edit'),
         ];
