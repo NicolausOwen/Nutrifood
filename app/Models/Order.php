@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Payment extends Model
+class Order extends Model
 {
     protected $primaryKey = 'id';
     public $timestamps = false;
@@ -15,7 +15,7 @@ class Payment extends Model
         'id',
         'user_id',
         'ticket_id',
-        'payment_proof',
+        'type',
         'created_at',
         'verification_payment',
         'verification_at',

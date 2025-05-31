@@ -62,6 +62,6 @@ class RegisteredUserController extends Controller
 
         $user->update($request->all());
 
-        return redirect(route('personal-data', absolute: false));
+        return redirect(route('payment', absolute: false));
     }
 }

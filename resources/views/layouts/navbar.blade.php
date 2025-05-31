@@ -83,7 +83,7 @@
           </li>
           <li>
             <a
-              href="/register"
+              href="/beli-tiket"
               class="underline-hover hover:text-secondaryColor transition duration-300 ease-in-out"
               >Beli Tiket</a
             >

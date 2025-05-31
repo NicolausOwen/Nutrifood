@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailController;
+use App\Models\TicketStok;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -21,8 +23,11 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_user' => 'required|exists:users,id',
+            'id_user' => 'required',
+            'type' => 'required',
         ]);
+
+        $userId = $request->id_user;
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
@@ -37,7 +42,7 @@ class TicketController extends Controller
             $lastNumber = intval(str_replace('Ticket-', '', $lastTicket->id));
             $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
         } else {
-            $newNumber = '0001';
+            $newNumber = '301';
         }
 
         $orderid = "Ticket-" . $newNumber;
@@ -46,12 +51,18 @@ class TicketController extends Controller
 
         $ticket = Ticket::create([
             'id' => $orderid,
-            'id_user' => $request->id_user,
+            'id_user' => $userId,
             'checkup' => false,
             'makan' => false,
             'masuk' => false,
+            'type' => $request->type,
             'qr_code' => $qrCodeString,
         ]);
+
+        $query = DB::table('ticket_stock')
+                ->where('type', $request->type);
+
+        $query->decrement('stock');
 
         app(EmailController::class)->sendEmail($ticket);
 
@@ -107,7 +118,7 @@ class TicketController extends Controller
         if ($ticket->$target) {
             return response()->json([
                 'success' => false,
-                'message' => 'Ticket already masuk'
+                'message' => `Ticket $target already used`
             ], 400);
         }
         $ticket->update([$target => true]);

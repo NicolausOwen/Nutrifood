@@ -27,8 +27,6 @@ Route::prefix('tickets')->name('tickets.')->group(function () {
 });
 
 Route::fallback(function(){
-
-
     return view('404');
 })-> name('404');
 

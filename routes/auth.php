@@ -44,9 +44,9 @@ Route::middleware('auth')->group(function () {
         return view('auth/personal-data');
     })->name('personal-data');
 
-    Route::get('payment', function () {
-        return view('payment/payment');
-    })->name('payment');
+    Route::get('beli-tiket', function () {
+        return view('ticket/beliticket');
+    })->name('beli-tiket');
 
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
