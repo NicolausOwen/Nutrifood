@@ -119,7 +119,7 @@
                 </div>
 
                 <div class="text-center mb-4">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Standard Ticket</h3>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">General Ticket</h3>
                     <div class="mb-3">
                         <span id="standardStatus" class="status-sold">Sold</span>
                     </div>
@@ -133,7 +133,7 @@
                     <p class="text-blue-600 cursor-pointer hover:underline">Read more</p>
                 </div>
 
-                <button onclick="bikinPayment('standard')" id="standardBuyBtn" class="bg-gray-400 text-white w-full py-3 rounded-lg font-semibold cursor-not-allowed" disabled>
+                <button onclick="bikinPayment('general')" id="standardBuyBtn" class="bg-gray-400 text-white w-full py-3 rounded-lg font-semibold cursor-not-allowed" disabled>
                     Checking Stock...
                 </button>
             </div>
