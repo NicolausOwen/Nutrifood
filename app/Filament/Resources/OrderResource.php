@@ -141,4 +141,9 @@ class OrderResource extends Resource
             //'edit' => Pages\EditPayment::route('/{record}/edit'),
         ];
     }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
 }

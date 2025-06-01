@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\TicketResource\Pages;
-use App\Filament\Resources\TicketResource\RelationManagers;
-use App\Models\Ticket;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Ticket;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\TicketResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\TicketResource\RelationManagers;
 
 class TicketResource extends Resource
 {
@@ -35,6 +36,9 @@ class TicketResource extends Resource
                 Forms\Components\TextInput::make('masuk')
                     ->numeric()
                     ->default(null),
+                Forms\Components\TextInput::make('type')
+                    ->numeric()
+                    ->default(null),
                 Forms\Components\Textarea::make('qr_code')
                     ->columnSpanFull(),
             ]);
@@ -48,23 +52,29 @@ class TicketResource extends Resource
                     ->label('ID')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('id_user')
+                    ->label('ID User')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('checkup')
-                    ->numeric()
+                Tables\Columns\BooleanColumn::make('masuk')
+                    ->label('Masuk')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('makan')
-                    ->numeric()
+                Tables\Columns\BooleanColumn::make('makan')
+                    ->label('Makan')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('masuk')
-                    ->numeric()
+                Tables\Columns\BooleanColumn::make('checkup')
+                    ->label('Checkup')
                     ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Action::make('View QR')
+                    ->label('View QR')
+                    ->url(fn (Ticket $record): string => 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data='.$record->qr_code)
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->openUrlInNewTab(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -84,8 +94,13 @@ class TicketResource extends Resource
     {
         return [
             'index' => Pages\ListTickets::route('/'),
-            'create' => Pages\CreateTicket::route('/create'),
-            'edit' => Pages\EditTicket::route('/{record}/edit'),
+            // 'create' => Pages\CreateTicket::route('/create'),
+            // 'edit' => Pages\EditTicket::route('/{record}/edit'),
         ];
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
     }
 }
