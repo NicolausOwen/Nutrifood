@@ -54,7 +54,6 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'umur' => ['required', 'integer'],
             'jenis_kelamin' => ['required', 'string'],
-            'ukuran_baju' => ['required', 'string'],
             'asal' => ['required', 'string'],
         ]);
 
