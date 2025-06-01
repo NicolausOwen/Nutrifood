@@ -18,6 +18,7 @@ class Ticket extends Model
         'checkup',
         'makan',
         'masuk',
+        'type',
         'qr_code',
     ];
 
