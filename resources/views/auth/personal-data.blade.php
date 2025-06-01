@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Regist</title>
+    <title>Personal Data</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"
@@ -291,22 +291,13 @@
               </div>
 
               <!-- Buttons Container -->
-              <div
-                class="mt-5 sm:mt-6 z-50 flex flex-col sm:flex-row gap-3 sm:gap-4"
-              >
+              <div class="mt-5 sm:mt-6 z-50">
                 <button
                   type="submit"
-                  class="flex-1 bg-[#203e99] text-white py-2 px-3 rounded-lg hover:bg-[#102b6b] transition-all duration-300 font-bold text-sm sm:text-base shadow-md hover:shadow-lg transform hover:-translate-y-0.5 border-2 border-[#102b6b]"
+                  class="w-full bg-[#203e99] text-white py-2 px-3 rounded-lg hover:bg-[#102b6b] transition-all duration-300 font-bold text-sm sm:text-base shadow-md hover:shadow-lg transform hover:-translate-y-0.5 border-2 border-[#102b6b]"
                 >
                   Create Account
                 </button>
-
-                <a
-                  href="#"
-                  class="flex-1 bg-gradient-to-r from-gray-700 to-gray-800 text-white py-2 px-3 rounded-lg hover:from-gray-800 hover:to-gray-900 transition-all duration-300 font-bold text-xs sm:text-sm text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 border-2 border-gray-900"
-                >
-                  Back To Homepage
-                </a>
               </div>
             </form>
           </div>
