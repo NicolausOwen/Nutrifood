@@ -104,7 +104,7 @@
         </div>
 
         <div class="z-10 w-full flex flex-col justify-center items-center">
-          <!-- Stepper -->
+          <!-- Stepper - Updated to 2 steps only -->
           <div class="mb-12 w-full absolute lg:top-20 top-10">
             <ol class="relative flex items-center w-full text-secondaryColor">
               <!-- Step 1 -->
@@ -124,17 +124,6 @@
                   class="flex items-center justify-center w-6 h-6 mx-auto border-4 border-secondaryColor rounded-full z-10 bg-primaryColor"
                 ></div>
                 <p class="mt-4 text-secondaryColor">Personal Info</p>
-                <div
-                  class="absolute top-3 left-1/2 w-full h-[6px] bg-white -z-10"
-                ></div>
-              </li>
-
-              <!-- Step 3 -->
-              <li class="flex-1 text-center relative">
-                <div
-                  class="flex items-center justify-center w-6 h-6 mx-auto border-4 border-white rounded-full z-10 bg-primaryColor"
-                ></div>
-                <p class="mt-4 text-white">Payment</p>
               </li>
             </ol>
           </div>
@@ -186,7 +175,7 @@
             >
               Personal Data
             </h2>
-            <form method="POST" action="{{ route('payment') }}">
+            <form method="POST" action="{{ route('personaldatapost') }}">
 
               @csrf
               <!-- Email Input -->
