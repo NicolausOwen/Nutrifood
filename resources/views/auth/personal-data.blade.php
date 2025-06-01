@@ -236,7 +236,7 @@
 
                   <!-- Shirt Size -->
                   <div class="mb-4 w-full">
-                    <label
+                    {{-- <label
                       for="shirt-size"
                       class="block text-blue-900 text-sm font-bold mb-1"
                     >
@@ -253,7 +253,7 @@
                       <option value="L">L</option>
                       <option value="XL">XL</option>
                       <option value="2XL">2XL</option>
-                    </select>
+                    </select> --}}
                   </div>
                 </div>
 
