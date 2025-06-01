@@ -42,6 +42,35 @@
           drop-shadow(0 6px 8px rgba(0, 0, 0, 0.45));
       }
 
+      .error-message {
+        animation: fadeInDown 0.3s ease-in-out;
+      }
+
+      .success-message {
+        animation: fadeInDown 0.3s ease-in-out;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .shake-animation {
+        animation: shake 0.5s ease-in-out;
+      }
+
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+      }
+
       @media (max-width: 640px) {
         .left-panel-image-top {
           max-width: 180px;
@@ -167,17 +196,60 @@
             </div>
           </div>
 
+          <!-- Global Error Alert -->
+          @if($errors->any())
+          <div class="mb-4 p-4 bg-red-50 border-l-4 border-red-400 rounded-md error-message">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-red-800">
+                  Registration Error
+                </h3>
+                <div class="mt-2 text-sm text-red-700">
+                  <ul class="list-disc space-y-1 pl-5">
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endif
+
+          <!-- Success Message (jika ada) -->
+          @if(session('success'))
+          <div class="mb-4 p-4 bg-green-50 border-l-4 border-green-400 rounded-md success-message">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-medium text-green-800">
+                  {{ session('success') }}
+                </p>
+              </div>
+            </div>
+          </div>
+          @endif
+
           <div
             class="hilo-yellow rounded-lg p-5 sm:p-6 md:p-8 border-4 border-blue-900 w-full shadow-2xl mb-16 lg:mb-0"
+            id="register-form-container"
           >
             <h2
               class="text-center text-blue-900 font-bold text-xl sm:text-2xl mb-6"
             >
               Register
             </h2>
-            <form method="POST" action="{{ route('register') }}">
-
-                @csrf
+            <form method="POST" action="{{ route('register') }}" id="register-form">
+              @csrf
               <!-- Email Input -->
               <div class="mb-4">
                 <label
@@ -189,11 +261,19 @@
                   type="email"
                   id="email"
                   name="email"
+                  value="{{ old('email') }}"
                   placeholder="Example@email.com"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
+                  class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm
+                    @error('email') border-red-500 bg-red-50 @else border-gray-300 @enderror"
                 />
+                @error('email')
+                <p class="text-red-500 text-xs font-semibold mt-1 error-message">
+                  {{ $message }}
+                </p>
+                @enderror
               </div>
 
+              <!-- Password Input -->
               <div class="mb-3">
                 <label
                   for="password"
@@ -206,7 +286,8 @@
                     id="password"
                     name="password"
                     placeholder="at least 8 characters"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
+                    class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm pr-10
+                      @error('password') border-red-500 bg-red-50 @else border-gray-300 @enderror"
                   />
                   <span class="password-eye" onclick="togglePassword()">
                     <svg
@@ -219,6 +300,7 @@
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
+                      id="password-eye-icon"
                     >
                       <path
                         d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
@@ -227,11 +309,17 @@
                     </svg>
                   </span>
                 </div>
+                @error('password')
+                <p class="text-red-500 text-xs font-semibold mt-1 error-message">
+                  {{ $message }}
+                </p>
+                @enderror
               </div>
 
+              <!-- Confirm Password Input -->
               <div class="mb-3">
                 <label
-                  for="password"
+                  for="confirm-password"
                   class="block text-blue-900 text-sm font-bold mb-1"
                   >Confirm Password</label
                 >
@@ -241,7 +329,7 @@
                     id="confirm-password"
                     name="password_confirmation"
                     placeholder="re-type your password"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm pr-10"
                   />
                   <span class="password-eye" onclick="toggleConfirmPassword()">
                     <svg
@@ -254,6 +342,7 @@
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
+                      id="confirm-password-eye-icon"
                     >
                       <path
                         d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
@@ -266,7 +355,7 @@
                   id="confirm-error"
                   class="text-red-500 text-xs font-semibold mt-1 hidden"
                 >
-                  Passwords does not match
+                  Passwords do not match
                 </p>
               </div>
 
@@ -276,13 +365,21 @@
               >
                 <button
                   type="submit"
-                  class="flex-1 bg-[#203e99] text-white py-2 px-3 rounded-lg hover:bg-[#102b6b] transition-all duration-300 font-bold text-sm sm:text-base shadow-md hover:shadow-lg transform hover:-translate-y-0.5 border-2 border-[#102b6b]"
+                  id="submit-btn"
+                  class="flex-1 bg-[#203e99] text-white py-2 px-3 rounded-lg hover:bg-[#102b6b] transition-all duration-300 font-bold text-sm sm:text-base shadow-md hover:shadow-lg transform hover:-translate-y-0.5 border-2 border-[#102b6b] disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none"
                 >
-                  Next
+                  <span id="btn-text">Next</span>
+                  <span id="btn-loading" class="hidden">
+                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Processing...
+                  </span>
                 </button>
 
                 <a
-                  href="#"
+                  href="/"
                   class="flex-1 bg-gradient-to-r from-gray-700 to-gray-800 text-white py-2 px-3 rounded-lg hover:from-gray-800 hover:to-gray-900 transition-all duration-300 font-bold text-xs sm:text-sm text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 border-2 border-gray-900"
                 >
                   Back To Homepage
@@ -291,7 +388,7 @@
             </form>
             <div class="text-center mt-10 font-bold">
               Already Have an Account?
-              <a href="/login" class="text-blue-900 text">Login</a>
+              <a href="/login" class="text-blue-900 hover:underline transition-all duration-200">Login</a>
             </div>
           </div>
         </div>
@@ -346,36 +443,107 @@
     <script>
       function togglePassword() {
         const passwordInput = document.getElementById("password");
-        passwordInput.type =
-          passwordInput.type === "password" ? "text" : "password";
+        const eyeIcon = document.getElementById("password-eye-icon");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          eyeIcon.innerHTML = `
+            <path d="M17.94 17.94A10.07 10.07 0 01 12 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+          `;
+        } else {
+          passwordInput.type = "password";
+          eyeIcon.innerHTML = `
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          `;
+        }
       }
 
       function toggleConfirmPassword() {
-        const confirmPasswordInput =
-          document.getElementById("confirm-password");
-        confirmPasswordInput.type =
-          confirmPasswordInput.type === "password" ? "text" : "password";
+        const confirmPasswordInput = document.getElementById("confirm-password");
+        const eyeIcon = document.getElementById("confirm-password-eye-icon");
+
+        if (confirmPasswordInput.type === "password") {
+          confirmPasswordInput.type = "text";
+          eyeIcon.innerHTML = `
+            <path d="M17.94 17.94A10.07 10.07 0 01 12 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+          `;
+        } else {
+          confirmPasswordInput.type = "password";
+          eyeIcon.innerHTML = `
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          `;
+        }
       }
 
-      // Form validation
-      document
-        .getElementById("register-form")
-        .addEventListener("submit", function (e) {
-          const password = document.getElementById("password").value;
-          const confirmPassword =
-            document.getElementById("confirm-password").value;
-          const confirmError = document.getElementById("confirm-error");
-          const confirmInput = document.getElementById("confirm-password");
+      // Enhanced form validation
+      document.getElementById("register-form").addEventListener("submit", function (e) {
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+        const confirmError = document.getElementById("confirm-error");
+        const confirmInput = document.getElementById("confirm-password");
+        const submitBtn = document.getElementById("submit-btn");
+        const btnText = document.getElementById("btn-text");
+        const btnLoading = document.getElementById("btn-loading");
 
-          if (password !== confirmPassword) {
-            e.preventDefault();
-            confirmError.classList.remove("hidden");
-            confirmInput.classList.add("border-red-500");
-          } else {
-            confirmError.classList.add("hidden");
-            confirmInput.classList.remove("border-red-500");
-          }
+        if (password !== confirmPassword) {
+          e.preventDefault();
+          confirmError.classList.remove("hidden");
+          confirmInput.classList.add("border-red-500", "bg-red-50", "shake-animation");
+
+          // Remove shake animation after it completes
+          setTimeout(() => {
+            confirmInput.classList.remove("shake-animation");
+          }, 500);
+
+          return false;
+        } else {
+          confirmError.classList.add("hidden");
+          confirmInput.classList.remove("border-red-500", "bg-red-50");
+        }
+
+        // Show loading state
+        submitBtn.disabled = true;
+        btnText.classList.add("hidden");
+        btnLoading.classList.remove("hidden");
+      });
+
+      // Real-time password confirmation validation
+      document.getElementById("confirm-password").addEventListener("input", function() {
+        const password = document.getElementById("password").value;
+        const confirmPassword = this.value;
+        const confirmError = document.getElementById("confirm-error");
+
+        if (confirmPassword && password !== confirmPassword) {
+          confirmError.classList.remove("hidden");
+          this.classList.add("border-red-500", "bg-red-50");
+        } else {
+          confirmError.classList.add("hidden");
+          this.classList.remove("border-red-500", "bg-red-50");
+        }
+      });
+
+      // Clear error states when user starts typing
+      document.getElementById("email").addEventListener("input", function() {
+        this.classList.remove("border-red-500", "bg-red-50");
+      });
+
+      document.getElementById("password").addEventListener("input", function() {
+        this.classList.remove("border-red-500", "bg-red-50");
+      });
+
+      // Auto-hide error messages after 10 seconds
+      setTimeout(function() {
+        const errorMessages = document.querySelectorAll('.error-message, .success-message');
+        errorMessages.forEach(function(msg) {
+          msg.style.transition = 'opacity 0.5s ease-out';
+          msg.style.opacity = '0';
+          setTimeout(() => msg.remove(), 500);
         });
+      }, 10000);
     </script>
   </body>
 </html>
