@@ -156,9 +156,9 @@
                                 Submit
                             </button>
 
-                            <a href="/"
+                            <a href="/register"
                                 class="flex-1 bg-gradient-to-r from-gray-700 to-gray-800 text-white py-2 px-3 rounded-lg hover:from-gray-800 hover:to-gray-900 transition-all duration-300 font-bold text-xs sm:text-sm text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 border-2 border-gray-900">
-                                Back To Homepage
+                                Register
                             </a>
                         </div>
                     </form>
