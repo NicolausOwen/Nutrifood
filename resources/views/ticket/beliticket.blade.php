@@ -143,7 +143,7 @@
     <!-- Footer -->
     @include('layouts.footer')
     <script>
-        const API_BASE_URL = 'http://127.0.0.1:8000/api';
+        const API_BASE_URL = 'https://hilo-sarcopenia.ddns.net/api';
 
         async function checkTicketStock(type) {
             try {
