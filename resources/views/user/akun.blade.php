@@ -118,7 +118,9 @@
                             <p class="text-gray-600">Update informasi profil dan alamat e-mail</p>
                         </div>
 
-                        <form class="space-y-6">
+                        <form method="post" action="{{ route('profile.update') }}" class="space-y-6">
+                            @csrf
+                            @method('patch')
                             <div>
                                 <label for="nama" class="block text-sm font-semibold text-gray-700 mb-2">Nama</label>
                                 <input
@@ -127,6 +129,7 @@
                                     name="nama"
                                     class="form-input w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hilo-blue focus:border-transparent"
                                     placeholder="Masukkan nama lengkap"
+                                    :value="old('name', $user->name)"
                                 >
                             </div>
 
@@ -138,6 +141,7 @@
                                     name="email"
                                     class="form-input w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-hilo-blue focus:border-transparent"
                                     placeholder="Masukkan alamat email"
+                                    :value="old('email', $user->email)"
                                 >
                             </div>
 
