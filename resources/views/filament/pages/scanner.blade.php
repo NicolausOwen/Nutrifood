@@ -40,15 +40,15 @@
                         </h3>
                         <div class="flex flex-wrap justify-center gap-2">
                             <button id="validate-checkup"
-                                class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-success-600 hover:bg-success-500 text-white ring-2 ring-primary-500">
+                                class="validate-btn fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-success-600 hover:bg-success-500 text-white ring-4 ring-primary-300">
                                 <span class="fi-btn-label">Checkup</span>
                             </button>
                             <button id="validate-makan"
-                                class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-warning-600 hover:bg-warning-500 text-white">
+                                class="validate-btn fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-warning-600 hover:bg-warning-500 text-white">
                                 <span class="fi-btn-label">Makan</span>
                             </button>
                             <button id="validate-masuk"
-                                class="fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white">
+                                class="validate-btn fi-btn fi-btn-size-md relative grid-flow-col items-center justify-center font-semibold transition-colors focus:outline-none disabled:opacity-70 rounded-lg gap-1.5 px-4 py-2 text-sm bg-purple-600 hover:bg-purple-500 text-white">
                                 <span class="fi-btn-label">Used</span>
                             </button>
                         </div>
@@ -341,11 +341,11 @@
                                 <div class="font-semibold">ID Tiket:</div>
                                 <div>${data.ticket.id || '-'}</div>
                                 <div class="font-semibold">Checkup:</div>
-                                <div>${data.ticket.checkup ? '✅ Sudah' : '❌ Belum'}</div>
+                                <div>${data.ticket.checkup == 1 ? '✅ Sudah' : '❌ Belum'}</div>
                                 <div class="font-semibold">Makan:</div>
-                                <div>${data.ticket.makan ? '✅ Sudah' : '❌ Belum'}</div>
+                                <div>${data.ticket.makan == 1 ? '✅ Sudah' : '❌ Belum'}</div>
                                 <div class="font-semibold">Used:</div>
-                                <div>${data.ticket.masuk ? '✅ Sudah' : '❌ Belum'}</div>
+                                <div>${data.ticket.masuk == 1 ? '✅ Sudah' : '❌ Belum'}</div>
                             </div>
                         </div>
                     `;

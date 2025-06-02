@@ -20,6 +20,7 @@ class Ticket extends Model
         'masuk',
         'type',
         'qr_code',
+        'purchase_date',
     ];
 
     public function user()

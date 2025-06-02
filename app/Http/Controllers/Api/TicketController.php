@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailController;
 use App\Models\TicketStok;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,6 +58,7 @@ class TicketController extends Controller
             'masuk' => false,
             'type' => $request->type,
             'qr_code' => $qrCodeString,
+            'purchase_date' => Carbon::now(),
         ]);
 
         $query = DB::table('ticket_stock')
@@ -115,10 +117,10 @@ class TicketController extends Controller
         }
 
         $target = $request->target;
-        if ($ticket->$target) {
+        if ($ticket->$target == 1) {
             return response()->json([
                 'success' => false,
-                'message' => `Ticket $target already used`
+                'message' => 'Ticket ' . $target . ' already used'
             ], 400);
         }
         $ticket->update([$target => true]);
