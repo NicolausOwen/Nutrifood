@@ -52,36 +52,36 @@
 
             <!-- Header with Logo -->
             <div class="p-6 border-b border-blue-800">
-                <div class="flex items-center space-x-3">
-                    <div class="flex items-center space-x-2">
-                        <div class="bg-hilo-green rounded-full px-3 py-1">
-                            <span class="text-hilo-blue font-bold text-sm">HiLo</span>
-                        </div>
-                        <div class="bg-gray-800 rounded-full p-2">
-                            <span class="text-white text-xs font-bold">ST</span>
-                        </div>
-                    </div>
+                <div class="flex items-center space-x-2">
+                    <img src="{{ asset('images/LOGO.png') }}" alt="Hilo Logo" class="w-6/12 h-auto">
                 </div>
-                <p class="text-blue-200 text-sm mt-2">HIMSI</p>
             </div>
 
             <!-- Navigation Menu -->
             <nav class="flex-1 p-6">
                 <ul class="space-y-3">
                     <li>
-                        <button class="w-full text-blue-200 hover:text-white hover:bg-blue-800 rounded-lg px-4 py-3 text-left font-medium transition-colors">
+                        <a href="{{ route('dashboard') }}" class="w-full text-blue-200 hover:text-white hover:bg-blue-800 rounded-lg px-4 py-3 text-left font-medium transition-colors block">
                             Tiket Kamu
-                        </button>
+                        </a>
                     </li>
                     <li>
-                        <button class="w-full text-blue-200 hover:text-white hover:bg-blue-800 rounded-lg px-4 py-3 text-left font-medium transition-colors">
+                        <a href="{{ route('beli-tiket') }}" class="w-full text-blue-200 hover:text-white hover:bg-blue-800 rounded-lg px-4 py-3 text-left font-medium transition-colors block">
                             Beli Tiket
-                        </button>
+                        </a>
                     </li>
                     <li>
-                        <button class="w-full bg-blue-800 rounded-lg px-4 py-3 text-left font-medium hover:bg-blue-700 transition-colors">
+                        <a href="{{ route('profile.edit') }}" class="w-full bg-blue-800 rounded-lg px-4 py-3 text-left font-medium hover:bg-blue-700 transition-colors block">
                             Akun
-                        </button>
+                        </a>
+                    </li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}" class="w-full">
+                            @csrf
+                            <button type="submit" class="w-full text-blue-200 hover:text-white hover:bg-blue-800 rounded-lg px-4 py-3 text-left font-medium transition-colors">
+                                Logout
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </nav>
@@ -97,12 +97,7 @@
                         <p class="text-gray-600 mt-1">Selamat Datang di Hilo Strong Fest, Fight Sarcopenia</p>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <div class="bg-hilo-green rounded-lg px-4 py-2">
-                            <span class="text-hilo-blue font-bold text-sm">HiLo</span>
-                        </div>
-                        <div class="bg-hilo-blue text-white rounded-lg px-3 py-2 text-sm font-bold">
-                            STRONG FEST
-                        </div>
+                        <img src="{{ asset('images/LOGO StrongFest 2025-01 (1).png') }}" alt="Strong Fest Logo" class="w-40 h-auto">
                     </div>
                 </div>
             </header>
