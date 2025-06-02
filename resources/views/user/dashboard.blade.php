@@ -144,7 +144,7 @@
                                             </td>
                                             <td class="px-8 py-6 text-sm text-gray-900">{{ $group['count'] }}</td>
                                             <td class="px-8 py-6 text-sm text-gray-900">
-                                                {{ $group['created_at'] ? $group['created_at']->format('d F Y') : '-' }}
+                                                {{ $group['purchase_date'] ? $group['purchase_date'] : '-' }}
                                             </td>
                                             <td class="px-8 py-6 text-sm">
                                                 @php
@@ -225,9 +225,20 @@
 
             let html = '<div class="grid gap-4">';
             tickets.forEach((ticket, index) => {
-                const checkupStatus = ticket.checkup ? 'text-green-600' : 'text-gray-400';
-                const makanStatus = ticket.makan ? 'text-green-600' : 'text-gray-400';
-                const masukStatus = ticket.masuk ? 'text-green-600' : 'text-gray-400';
+                // Proper boolean conversion - handle both boolean and string values
+                const checkupUsed = ticket.checkup === true || ticket.checkup === 1 || ticket.checkup === '1';
+                const makanUsed = ticket.makan === true || ticket.makan === 1 || ticket.makan === '1';
+                const masukUsed = ticket.masuk === true || ticket.masuk === 1 || ticket.masuk === '1';
+
+                // Set colors based on actual boolean status
+                const checkupStatus = checkupUsed ? 'text-green-600' : 'text-gray-400';
+                const makanStatus = makanUsed ? 'text-green-600' : 'text-gray-400';
+                const masukStatus = masukUsed ? 'text-green-600' : 'text-gray-400';
+
+                // Set background colors
+                const checkupBg = checkupUsed ? 'bg-green-100' : 'bg-gray-100';
+                const makanBg = makanUsed ? 'bg-green-100' : 'bg-gray-100';
+                const masukBg = masukUsed ? 'bg-green-100' : 'bg-gray-100';
 
                 html += `
                     <div class="border rounded-lg p-4 bg-gray-50">
@@ -247,26 +258,29 @@
                         </div>
                         <div class="grid grid-cols-3 gap-4 text-sm">
                             <div class="text-center">
-                                <div class="w-8 h-8 rounded-full mx-auto mb-1 flex items-center justify-center ${ticket.checkup ? 'bg-green-100' : 'bg-gray-100'}">
-                                    <svg class="w-4 h-4 ${checkupStatus}" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
+                                <div class="w-8 h-8 rounded-full mx-auto mb-1 flex items-center justify-center ${checkupBg}">
+                                    ${checkupUsed ?
+                                        '<svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>'
+                                        : '<svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>'
+                                    }
                                 </div>
                                 <p class="${checkupStatus}">Check-up</p>
                             </div>
                             <div class="text-center">
-                                <div class="w-8 h-8 rounded-full mx-auto mb-1 flex items-center justify-center ${ticket.makan ? 'bg-green-100' : 'bg-gray-100'}">
-                                    <svg class="w-4 h-4 ${makanStatus}" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
+                                <div class="w-8 h-8 rounded-full mx-auto mb-1 flex items-center justify-center ${makanBg}">
+                                    ${makanUsed ?
+                                        '<svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>'
+                                        : '<svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>'
+                                    }
                                 </div>
                                 <p class="${makanStatus}">Makan</p>
                             </div>
                             <div class="text-center">
-                                <div class="w-8 h-8 rounded-full mx-auto mb-1 flex items-center justify-center ${ticket.masuk ? 'bg-green-100' : 'bg-gray-100'}">
-                                    <svg class="w-4 h-4 ${masukStatus}" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
+                                <div class="w-8 h-8 rounded-full mx-auto mb-1 flex items-center justify-center ${masukBg}">
+                                    ${masukUsed ?
+                                        '<svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>'
+                                        : '<svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>'
+                                    }
                                 </div>
                                 <p class="${masukStatus}">Masuk</p>
                             </div>

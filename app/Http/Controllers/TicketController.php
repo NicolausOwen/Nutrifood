@@ -24,7 +24,7 @@ class TicketController extends Controller
             return [
                 'type' => $group->first()->type,
                 'count' => $group->count(),
-                'created_at' => $group->first()->created_at,
+                'purchase_date' => $group->first()->purchase_date,
                 'tickets' => $group
             ];
         });
