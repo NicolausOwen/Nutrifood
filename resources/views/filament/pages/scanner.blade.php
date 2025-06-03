@@ -342,7 +342,7 @@
                                 <div>${data.ticket.id || '-'}</div>
                                 <div class="font-semibold">Check In:</div>
                                 <div>${data.ticket.masuk == 1 ? '✅ Sudah' : '❌ Belum'}</div>
-                                <div class="font-semibold">Checkup:</div>
+                                <div class="font-semibold">Race-Pack:</div>
                                 <div>${data.ticket.checkup == 1 ? '✅ Sudah' : '❌ Belum'}</div>
                                 <div class="font-semibold">Makan:</div>
                                 <div>${data.ticket.makan == 1 ? '✅ Sudah' : '❌ Belum'}</div>
