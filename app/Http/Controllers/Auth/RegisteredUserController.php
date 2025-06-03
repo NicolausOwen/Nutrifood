@@ -52,17 +52,17 @@ class RegisteredUserController extends Controller
     public function update_personal_info(Request $request): RedirectResponse
     {
         $request->validate([
-            'id' => ['required', 'string'],
+            'orderid' => ['required', 'string'],
             'name' => ['required', 'string', 'max:255'],
             'umur' => ['required', 'integer'],
             'jenis_kelamin' => ['required', 'string'],
             'asal' => ['required', 'string'],
         ]);
 
-        $user = Order::findOrFail($request->id);
+        $user = Order::findOrFail($request->orderid);
 
         $user->update($request->all());
 
-        return redirect(route('dasboard', absolute: false));
+        return redirect(route('dashboard', absolute: false));
     }
 }

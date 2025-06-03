@@ -88,7 +88,8 @@ class OrderResource extends Resource
                         try {
                             $ticketController = app(\App\Http\Controllers\Api\TicketController::class);
 
-                            $request = new \Illuminate\Http\Request(['id_user' => $record->user_id, 'type' => $record->type]);
+                            $request = new \Illuminate\Http\Request(['id_user' => $record->user_id, 'type' => $record->type,
+                            'name' => $record->name, 'umur' => $record->umur, 'jenis_kelamin' => $record->jenis_kelamin, 'asal' => $record->asal, 'nama_komunitas' => $record->nama_komunitas]);
 
                             $response = $ticketController->store($request);
 

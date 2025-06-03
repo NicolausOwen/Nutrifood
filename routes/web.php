@@ -10,6 +10,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [TicketController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard/ticket', [TicketController::class, 'dashboard2'])->middleware(['auth', 'verified'])->name('dashboard2');
 
 require __DIR__.'/auth.php';
 

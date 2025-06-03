@@ -112,7 +112,7 @@
                 <div
                   class="flex items-center justify-center w-6 h-6 mx-auto rounded-full z-10 bg-secondaryColor"
                 ></div>
-                <p class="mt-4">Account Info</p>
+                <p class="mt-4">Pilih Tiket</p>
                 <div
                   class="absolute top-3 left-1/2 w-full h-[6px] bg-secondaryColor -z-10"
                 ></div>
@@ -195,7 +195,7 @@
                     name="name"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
                   />
-                  <input type="text" id="orderid" disabled hidden name="id">
+                  <input type="text" id="orderid" name="orderid" hidden>
                 </div>
 
                 <!-- umur -->

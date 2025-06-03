@@ -51,10 +51,9 @@ class TicketResource extends Resource
                 Tables\Columns\TextColumn::make('id')
                     ->label('ID')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('id_user')
-                    ->label('ID User')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Nama')
+                    ->searchable(),
                 Tables\Columns\BooleanColumn::make('masuk')
                     ->label('Masuk')
                     ->sortable(),

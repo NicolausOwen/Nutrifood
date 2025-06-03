@@ -134,28 +134,7 @@
 
         <div class="z-10 w-full flex flex-col justify-center items-center">
           <!-- Stepper - Updated to 2 steps only -->
-          <div class="mb-12 w-full absolute lg:top-20 top-10">
-            <ol class="relative flex items-center w-full text-secondaryColor">
-              <!-- Step 1 -->
-              <li class="flex-1 text-center relative">
-                <div
-                  class="flex items-center justify-center w-6 h-6 mx-auto border-4 border-secondaryColor rounded-full z-10 bg-primaryColor"
-                ></div>
-                <p class="mt-4">Account Info</p>
-                <div
-                  class="absolute top-3 left-1/2 w-full h-[6px] bg-white -z-10"
-                ></div>
-              </li>
-
-              <!-- Step 2 -->
-              <li class="flex-1 text-center relative">
-                <div
-                  class="flex items-center justify-center w-6 h-6 mx-auto border-4 border-white rounded-full z-10 bg-primaryColor"
-                ></div>
-                <p class="mt-4 text-white">Personal Info</p>
-              </li>
-            </ol>
-          </div>
+          
           <!-- HiLo StrongFest Logo -->
           <div class="lg:mt-0 mt-40">
             <img
