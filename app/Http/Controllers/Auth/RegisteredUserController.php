@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -45,22 +46,23 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('personal-data', absolute: false));
+        return redirect(route('beli-tiket', absolute: false));
     }
 
     public function update_personal_info(Request $request): RedirectResponse
     {
         $request->validate([
+            'id' => ['required', 'string'],
             'name' => ['required', 'string', 'max:255'],
             'umur' => ['required', 'integer'],
             'jenis_kelamin' => ['required', 'string'],
             'asal' => ['required', 'string'],
         ]);
 
-        $user = User::findOrFail(Auth::id());
+        $user = Order::findOrFail($request->id);
 
         $user->update($request->all());
 
-        return redirect(route('beli-tiket', absolute: false));
+        return redirect(route('dasboard', absolute: false));
     }
 }

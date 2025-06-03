@@ -42,6 +42,9 @@ class OrderResource extends Resource
                 Tables\Columns\TextColumn::make('id')
                     ->label('Order ID')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Name')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('ticket_id')
                     ->label('Ticket ID')
                     ->searchable(),

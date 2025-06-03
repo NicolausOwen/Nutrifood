@@ -205,7 +205,8 @@
 
                 if (data.success) {
                     alert('Order berhasil dibuat!');
-                    window.location.href = '/dashboard';
+                    localStorage.setItem('orderid', data.order_id);
+                    window.location.href = '/personal-data';
                 } else {
                     throw new Error(data.message || 'Failed to create order');
                 }

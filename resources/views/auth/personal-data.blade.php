@@ -78,7 +78,7 @@
     </script>
   </head>
 
-  <body class="min-h-screen relative">
+  <body class="min-h-screen relative" onload="isiid()">
     <div class="flex flex-col lg:flex-row min-h-screen w-full overflow-hidden">
       <!-- Left Panel -->
       <div
@@ -195,6 +195,7 @@
                     name="name"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold text-sm"
                   />
+                  <input type="text" id="orderid" disabled>
                 </div>
 
                 <!-- umur -->
@@ -351,6 +352,10 @@
     </div>
 
     <script>
+      function isiid() {
+        document.getElementById('orderid').value = localStorage.getItem('orderid');
+      }
+
       function togglePassword() {
         const passwordInput = document.getElementById("password");
         passwordInput.type =
