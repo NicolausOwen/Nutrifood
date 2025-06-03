@@ -44,7 +44,7 @@
         class="lg:px-32 md:px-20 px-8 flex flex-col md:flex-row gap-16 md:gap-0 justify-between"
       >
         <div>
-          <img src="{{ asset('images/logo.png') }}" alt="" class="w-36" />
+          <img src="{{ asset('images/LOGO.png') }}" alt="" class="w-36" />
           <div class="mt-6">
             <p>Ballroom Hotel Aryaduta</p>
             <p>Jl. POM IX, Kota Palembang, Sumatera Selatan 30137</p>
