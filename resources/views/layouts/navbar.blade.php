@@ -57,7 +57,7 @@
     </style>
   </head>
   <body>
-    <header class="bg-primaryColor">
+    <header class="bg-primaryColor fixed">
       <nav
         class="flex items-center justify-between px-6 md:px-24 lg:px-32 py-5"
       >
