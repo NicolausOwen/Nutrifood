@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navbar</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
@@ -60,7 +62,7 @@
         class="flex items-center justify-between px-6 md:px-24 lg:px-32 py-5"
       >
         <div>
-          <img src="{{ asset('images/LOGO.png') }}" alt="logo" class="w-36 md:w-40" />
+          <img src="images/logo.png" alt="logo" class="w-36 md:w-40" />
         </div>
 
         <!-- hamburger -->
@@ -93,6 +95,13 @@
               href="/login"
               class="underline-hover hover:text-secondaryColor transition duration-300 ease-in-out"
               >Login</a
+            >
+          </li>
+          <li>
+            <a
+              href="/register"
+              class="underline-hover hover:text-secondaryColor transition duration-300 ease-in-out"
+              >Registrasi</a
             >
           </li>
         </ul>

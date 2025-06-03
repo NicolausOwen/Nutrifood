@@ -1,8 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>footer</title>
+
     <!-- Fonts & Icons -->
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
@@ -43,14 +46,14 @@
         <div>
           <img src="images/logo.png" alt="" class="w-36" />
           <div class="mt-6">
-            <p>JL. Voli No. H14 RT. 31</p>
-            <p>Kota Palembang, Sumatera Selatan 30137</p>
+            <p>Ballroom Hotel Aryaduta</p>
+            <p>Jl. POM IX, Kota Palembang, Sumatera Selatan 30137</p>
           </div>
         </div>
         <div>
           <p class="text-xl font-black">Contact Us</p>
           <div class="mt-4">
-            <p>example@gmail.com</p>
+            <p>nutrihub.palembang@gmail.com</p>
             <div class="text-xl flex gap-4 mt-1">
               <a
                 href=""
@@ -81,10 +84,16 @@
                 <li>Home</li>
               </a>
               <a
-                href="/register"
+                href="/beli-tiket"
                 class="hover:text-secondaryColor transition delay-50 ease-in-out"
               >
                 <li>Beli Tiket</li>
+              </a>
+              <a
+                href="/register"
+                class="hover:text-secondaryColor transition delay-50 ease-in-out"
+              >
+                <li>Registrasi</li>
               </a>
               <a
                 href="/login"
