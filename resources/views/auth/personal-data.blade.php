@@ -297,7 +297,7 @@
                   type="submit"
                   class="w-full bg-[#203e99] text-white py-2 px-3 rounded-lg hover:bg-[#102b6b] transition-all duration-300 font-bold text-sm sm:text-base shadow-md hover:shadow-lg transform hover:-translate-y-0.5 border-2 border-[#102b6b]"
                 >
-                  Create Account
+                  Beli Tiket
                 </button>
               </div>
             </form>
