@@ -30,10 +30,10 @@
             <div data-aos="fade-right" data-aos-duration="1000">
                 <h2 class="text-6xl font-extrabold text-black-800 mb-5">Apa Itu StrongFest?</h2>
                 <p class="text-black-700 leading-relaxed">
-                    Intel (Intelligence and Technology) adalah komunitas mahasiswa Fakultas Ilmu Komputer Unsri yang berfokus pada pengembangan teknologi, kreativitas, dan inovasi. Kami menjadi wadah bagi mahasiswa untuk mengembangkan kemampuan teknis, soft skills, dan jaringan profesional di bidang teknologi informasi.
+                [Sarcopenia] Loss of muscle mass and strength due to aging process and may resulted in low physical performance. Start at the age 30th, Muscle loss 3-8% /decade. START PREVENTION WITH A HEALTHIER LIFESTYLE!
                 </p>
                 <p class="text-black-700 leading-relaxed mt-4">
-                    Sejak berdiri pada tahun 2010, Intel telah menghasilkan banyak talenta-talenta berbakat yang berkontribusi di berbagai perusahaan teknologi ternama maupun startup lokal.
+                Acara ini akan dilaksanakan di Hotel Aryaduta Palembang, sebagai tempat pelaksanaan kegiatan edukasi dan promotif untuk mendukung gaya hidup sehat.
                 </p>
             </div>
 
@@ -45,6 +45,44 @@
         </div>
     </section>
     <!-- DESCRITION -->
+
+
+    <!-- LOCATION -->
+     <section>
+        <div>
+            <h2 class="text-3xl font-extrabold text-black-100 text-center mb-5">EVENT LOCATION</h2>
+        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-[70px] items-center"> 
+       <div class="flex justify-content-auto gap-[3%] mt-[7%]" data-aos="fade-right" data-aos-duration="1000">
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1893.6431893261731!2d104.74015336954795!3d-2.977309999812416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3b75e7e673b969%3A0x83a46f5d2cfc08c1!2sAryaduta%20Palembang!5e1!3m2!1sid!2sid!4v1749048958690!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       </div>
+
+         <div class="" data-aos="fade-left" data-aos-duration="1000">
+                            <h3 class="mb-[23px] font-extrabold text-2xl text-center">
+                                <i class="fa-solid fa-location-dot"></i> Hotel Aryaduta Palembang
+                            </h3>
+                            <table class="w-full text-left border-collapse bg-gray-200">
+                                <!-- Rocket Launch Section -->
+                                <tr>
+                                    <td colspan="4">
+                                        <h4 class="text-xl font-semibold text-center mb-[10px]">Waktu Pelaksanaan</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-1"><i class="fa-regular fa-calendar"></i></td>
+                                    <td class="px-1 ">Sabtu, 12 Oktober 2024</td>
+                                    <td class="px-1"><i class="fa-regular fa-clock"></i></td>
+                                    <td class="px-1">16.00 WIB</td>
+                                    <td class="px-1"></td>
+                                </tr>
+                            </table>
+
+         </div>
+    </div>
+
+
+        </section>
+    <!-- LOCATION -->
 
     <!-- COLLABORATION -->
      <section class="py-24">
@@ -61,10 +99,10 @@
             <div data-aos="fade-left" data-aos-duration="1000">
                 <h4 class="text-3xl font-extrabold text-black-100 mb-5">COLLABORATION IN AMBITION</h4>
                 <p class="text-black-700 leading-relaxed">
-                    Intel (Intelligence and Technology) adalah komunitas mahasiswa Fakultas Ilmu Komputer Unsri yang berfokus pada pengembangan teknologi, kreativitas, dan inovasi. Kami menjadi wadah bagi mahasiswa untuk mengembangkan kemampuan teknis, soft skills, dan jaringan profesional di bidang teknologi informasi.
+                    Himpunan Mahasiswa Sistem Informasi (HIMSI) Fakultas Ilmu Komputer Universitas Sriwijaya (Unsri) telah menjadi wadah pengembangan potensi mahasiswa di bidang teknologi informasi. Melalui berbagai program kerja seperti workshop, seminar, dan kegiatan riset, HIMSI berfokus pada peningkatan kemampuan teknis, soft skills, dan jejaring profesional anggotanya.
                 </p>
                 <p class="text-black-700 leading-relaxed mt-4">
-                    Sejak berdiri pada tahun 2010, Intel telah menghasilkan banyak talenta-talenta berbakat yang berkontribusi di berbagai perusahaan teknologi ternama maupun startup lokal.
+                   HIMSI Fasilkom Unsri terdiri dari 8 departemen dan 8 divisi, masing-masing memiliki peran strategis dalam mendukung pengembangan potensi anggota. Informasi lengkap mengenai struktur dan kegiatan HIMSI dapat dibaca melalui website resmi <a href="https://himsiunsri.org/" class="underline">HIMSI Unsri</a>.
                 </p>
             </div>
         </div>
