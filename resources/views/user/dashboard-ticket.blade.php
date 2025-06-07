@@ -152,23 +152,9 @@
                                                 {{ $group['purchase_date'] ? $group['purchase_date'] : '-' }}
                                             </td>
                                             <td class="px-8 py-6 text-sm">
-                                                @php
-                                                    $usedCount = $group['tickets']->where('is_fully_used', true)->count();
-                                                    $totalCount = $group['count'];
-                                                @endphp
-                                                @if($usedCount == $totalCount)
-                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                                        Semua Terpakai
-                                                    </span>
-                                                @elseif($usedCount > 0)
-                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                                        {{ $usedCount }}/{{ $totalCount }} Terpakai
-                                                    </span>
-                                                @else
-                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                                        Belum Terpakai
-                                                    </span>
-                                                @endif
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                    Active
+                                                </span>
                                             </td>
                                             <td class="px-8 py-6">
                                                 <button onclick="showTicketDetails('{{ $group['type'] }}', {{ json_encode($group['tickets']) }})"
