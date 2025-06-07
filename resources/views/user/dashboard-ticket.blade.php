@@ -300,6 +300,7 @@
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <h4 class="font-semibold text-lg">${ticket.id}</h4>
+                                    <p class="font-normal text-gray-600">Nama: ${ticket.name}</p>
                                     <p class="text-sm text-gray-600">QR Code:
                                         <div style="text-align: center; margin: 30px 0;">
                                             <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${ticket.qr_code}" alt="QR Code" style="border-radius: 8px;">
