@@ -98,10 +98,14 @@
                 </div>
 
                 <div class="text-sm text-gray-600 mb-6 space-y-1">
-                    <p>Sit morbi sit molestsuada posuere.</p>
-                    <p>Aliquam ut risus pretium ipsum sed id</p>
-                    <p>quis eget.</p>
-                    <p class="text-blue-600 cursor-pointer hover:underline">Read more</p>
+                    <p class="text-green-600">- Makan Siang</p>
+                    <p>- Jersey Strongfest</p>
+                    <p>- Hilo Chocofit Protein</p>
+                    <p>- Race Pack</p>
+                    <p>- Erha Goodie Bag</p>
+                    <p>- Kupon Doorprize</p>
+                    <p>- Semua Sesi Senam</p>
+                    <p>- Medical Checkup</p>
                 </div>
 
                 <button onclick="bikinPayment('exclusive')" id="exclusiveBuyBtn" class="bg-gray-400 text-white w-full py-3 rounded-lg font-semibold cursor-not-allowed" disabled>
@@ -127,10 +131,13 @@
                 </div>
 
                 <div class="text-sm text-gray-600 mb-6 space-y-1">
-                    <p>Sit morbi sit molestsuada posuere.</p>
-                    <p>Aliquam ut risus pretium ipsum sed id</p>
-                    <p>quis eget.</p>
-                    <p class="text-blue-600 cursor-pointer hover:underline">Read more</p>
+                    <p>- Jersey Strongfest</p>
+                    <p>- Hilo Chocofit Protein</p>
+                    <p>- Race Pack</p>
+                    <p>- Erha Goodie Bag</p>
+                    <p>- Kupon Doorprize</p>
+                    <p>- Semua Sesi Senam</p>
+                    <p>- Medical Checkup</p>
                 </div>
 
                 <button onclick="bikinPayment('general')" id="standardBuyBtn" class="bg-gray-400 text-white w-full py-3 rounded-lg font-semibold cursor-not-allowed" disabled>
