@@ -50,11 +50,16 @@ class TicketController extends Controller
 
         $qrCodeString = Str::uuid()->toString();
 
+        $makanbool = false;
+        if ($request->type == 'general') {
+            $makanbool = true;
+        }
+
         $ticket = Ticket::create([
             'id' => $orderid,
             'id_user' => $userId,
             'checkup' => false,
-            'makan' => false,
+            'makan' => $makanbool,
             'masuk' => false,
             'name' => $request->name,
             'umur' => $request->umur,
