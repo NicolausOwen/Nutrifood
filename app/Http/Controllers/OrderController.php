@@ -59,7 +59,7 @@ class OrderController extends Controller
                 'id' => $orderid,
                 'user_id' => $userId,
                 'type' => $request->type,
-                'created_at' => Carbon::now(),
+                'purchase_date' => Carbon::now(),
             ]);
 
             return response()->json([

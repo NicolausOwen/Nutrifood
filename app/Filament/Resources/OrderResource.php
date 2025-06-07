@@ -70,8 +70,8 @@ class OrderResource extends Resource
                         'Not Verified' => 'danger',
                     })
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                Tables\Columns\TextColumn::make('purchase_date')
+                    ->date()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

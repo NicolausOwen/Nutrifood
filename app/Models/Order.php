@@ -22,7 +22,7 @@ class Order extends Model
         'ukuran_baju',
         'asal',
         'nama_komunitas',
-        'created_at',
+        'purchase_date',
         'verification_payment',
         'verification_at',
     ];
