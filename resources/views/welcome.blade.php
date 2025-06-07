@@ -59,7 +59,7 @@
 
          <div class="" data-aos="fade-left" data-aos-duration="1000">
                             <h3 class="mb-[23px] font-extrabold text-2xl text-center">
-                                <i class="fa-solid fa-location-dot"></i> Hotel Aryaduta Palembang
+                                <i class="fa-solid fa-location-dot"></i> Ballroom Aryaduta Palembang
                             </h3>
                             <table class="w-full text-left border-collapse bg-gray-200">
                                 <!-- Rocket Launch Section -->
@@ -70,7 +70,7 @@
                                 </tr>
                                 <tr>
                                     <td class="px-1"><i class="fa-regular fa-calendar"></i></td>
-                                    <td class="px-1 ">Sabtu, 12 Oktober 2024</td>
+                                    <td class="px-1 ">Sabtu, 05 Juli 2025</td>
                                     <td class="px-1"><i class="fa-regular fa-clock"></i></td>
                                     <td class="px-1">16.00 WIB</td>
                                     <td class="px-1"></td>

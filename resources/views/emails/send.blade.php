@@ -20,8 +20,8 @@
                     <!-- Sapaan -->
                     <tr>
                         <td style="padding: 24px;">
-                            <h2 style="margin: 0; font-size: 18px;">Hai, <strong>{{ $ticket->user->name }}</strong></h2>
-                            <p style="font-size: 14px;">Boom! Pembayaran sukses, tiket kamu resmi jadi milikmu! 🎉</p>
+                            <h2 style="margin: 0; font-size: 18px;">Hai, <strong>{{ $ticket->name }}</strong></h2>
+                            <p style="font-size: 14px;">Boom! Order sukses, tiket kamu resmi jadi milikmu! 🎉</p>
                             <p style="font-size: 14px;"><strong>{{ $ticket->event_name ?? 'HiLo StrongFest' }}</strong> tinggal hitungan hari. Yuk, cek semua info penting di bawah dan siap-siap buat pengalaman luar biasa! 🌿</p>
                         </td>
                     </tr>
@@ -39,15 +39,15 @@
                                         </td>
                                     </tr>
                                     <tr><td colspan="2" style="height: 16px;"></td></tr>
-                                    <tr><td><strong>Nama:</strong></td><td>{{ $ticket->user->name }}</td></tr>
-                                    <tr><td><strong>ID Tiket:</strong></td><td>{{ $ticket->qr_code ?? 'BLA-0000' }}</td></tr>
+                                    <tr><td><strong>Nama:</strong></td><td>{{ $ticket->name }}</td></tr>
+                                    <tr><td><strong>ID Tiket:</strong></td><td>{{ $ticket->id ?? 'BLA-0000' }}</td></tr>
                                     <tr><td><strong>Event:</strong></td><td>{{ $ticket->event_name ?? 'HiLo StrongFest' }}</td></tr>
-                                    <tr><td><strong>Tanggal:</strong></td><td>Sabtu, 10 Mei 2025</td></tr>
-                                    <tr><td><strong>Waktu:</strong></td><td>10.00 – 12.00 WIB</td></tr>
-                                    <tr><td><strong>Lokasi:</strong></td><td>Nutrihub Palembang</td></tr>
+                                    <tr><td><strong>Tanggal:</strong></td><td>Sabtu, 05 Juli 2025</td></tr>
+                                    <tr><td><strong>Waktu:</strong></td><td>16.00 WIB</td></tr>
+                                    <tr><td><strong>Lokasi:</strong></td><td>Ballroom Aryaduta Palembang</td></tr>
                                 </table>
 
-                                <!-- Invoice -->
+                                {{-- <!-- Invoice -->
                                 <table width="100%" style="margin-bottom: 20px;">
                                     <tr style="background-color: #4a61dd;">
                                         <td align="left" style="padding: 0 16px;">
@@ -61,7 +61,7 @@
                                 <p><strong>Metode Pembayaran:</strong> {{ $ticket->payment_method ?? 'BCA Virtual Account' }}</p>
                                 <p><strong>Total Pembayaran:</strong> Rp{{ number_format($ticket->amount ?? 150000, 0, ',', '.') }}</p>
                                 <p><strong>Status:</strong> <span style="color: green;">Lunas ✅</span></p>
-                                <p><strong>Tanggal Pembelian:</strong> {{ $ticket->purchase_date ?? '15 April 2025' }}</p>
+                                <p><strong>Tanggal Pembelian:</strong> {{ $ticket->purchase_date ?? '15 April 2025' }}</p> --}}
 
                                 <!-- Gambar Tiket & QR -->
                                 <div align="center" style="padding: 20px 0;">
@@ -71,7 +71,7 @@
                                             <td width="40" style="background-color: #1f3089; color: #fff; text-align: center; font-size: 20px; font-weight: bold;">
                                                 <div style="writing-mode: vertical-lr; transform: rotate(180deg); padding: 12px 0;">
                                                     <pre>
-                                                        NUTRIFOOD   NUTRIFOOD   NUTRIFOOD   NUTRIFOOD
+                                                        HILO STRONGFEST   HILO STRONGFEST   HILO STRONGFEST   HILO STRONGFEST
                                                     </pre>
                                                 </div>
                                             </td>
@@ -81,10 +81,10 @@
                                                 <p style="margin: 0 0 8px 0;">Hi, <strong>{{ $ticket->user->name }}</strong></p>
                                                 <p style="margin: 0 0 16px 0; font-weight: bold;">Selamat! Pembayaran kamu sudah berhasil kami terima.</p>
 
-                                                <p style="margin: 0 0 8px 0;"><strong>Nutrifood</strong></p>
+                                                <p style="margin: 0 0 8px 0;"><strong>HILO STRONGFEST</strong></p>
 
                                                 <!-- Garis Potong dan Lekukan -->
-                                                --------------------------------------------------------------------------
+                                                ------------------------------------------------------------------
 
                                                 <table width="100%" style="margin-bottom: 20px;">
                                                     <tr>
@@ -106,15 +106,15 @@
                                                 <table style="width: 100%; font-size: 14px;">
                                                     <tr>
                                                         <td style="padding: 4px 0;"><strong>Tanggal</strong></td>
-                                                        <td style="padding: 4px 0;">: 10 Mei 2025</td>
+                                                        <td style="padding: 4px 0;">: 05 Juli 2025</td>
                                                     </tr>
                                                     <tr>
                                                         <td style="padding: 4px 0;"><strong>Waktu</strong></td>
-                                                        <td style="padding: 4px 0;">: 10.00 - 15.00 WIB</td>
+                                                        <td style="padding: 4px 0;">: 16.00 WIB</td>
                                                     </tr>
                                                     <tr>
                                                         <td style="padding: 4px 0;"><strong>Lokasi</strong></td>
-                                                        <td style="padding: 4px 0;">: Nutrihub Palembang</td>
+                                                        <td style="padding: 4px 0;">: Ballroom Aryaduta Palembang </td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -122,10 +122,10 @@
                                     </table>
                                 </div>
 
-                                <!-- Tombol Unduh -->
+                                {{-- <!-- Tombol Unduh -->
                                 <div align="center" style="padding: 20px;">
                                     <a href="{{ $ticket->download_url }}" style="display: inline-block; padding: 12px 24px; background-color: #4a61dd; color: white; text-decoration: none; border-radius: 30px; font-weight: bold;">Unduh Tiket</a>
-                                </div>
+                                </div> --}}
 
                             </div>
                         </td>
@@ -136,7 +136,7 @@
                         <td style="padding: 20px; text-align: center; font-size: 14px; color: #333;">
                             Terima kasih telah mempercayai kami. Nikmati acaranya dan sampai bertemu di <strong>{{ $ticket->event_name ?? 'HiLo StrongFest' }}</strong>!<br><br>
                             Salam hangat,<br>
-                            <strong>Tim Nutrifood</strong>
+                            <strong>Tim HILO STRONGFEST</strong>
                         </td>
                     </tr>
                     <tr><td style="height: 30px;"></td></tr>
