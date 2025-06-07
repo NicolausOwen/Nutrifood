@@ -85,7 +85,7 @@
                 <div class="text-center mb-6">
                     <div class="bg-blue-100 rounded-lg p-4 mb-4">
                         <img src="{{ asset('images/basic.png') }}" alt="Basic Ticket" class="w-32 h-32 mx-auto object-contain">
-                        <div class="text-blue-600 font-semibold mt-2">Basic Ticket</div>
+                        <div class="text-blue-600 font-semibold mt-2">Exclusive Ticket</div>
                     </div>
                 </div>
 
@@ -118,7 +118,7 @@
                 <div class="text-center mb-6">
                     <div class="bg-blue-100 rounded-lg p-4 mb-4">
                         <img src="{{ asset('images/basic.png') }}" alt="Basic Ticket" class="w-32 h-32 mx-auto object-contain">
-                        <div class="text-blue-600 font-semibold mt-2">Basic Ticket</div>
+                        <div class="text-blue-600 font-semibold mt-2">General Ticket</div>
                     </div>
                 </div>
 
