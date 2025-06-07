@@ -71,7 +71,7 @@
                                             <td width="40" style="background-color: #1f3089; color: #fff; text-align: center; font-size: 20px; font-weight: bold;">
                                                 <div style="writing-mode: vertical-lr; transform: rotate(180deg); padding: 12px 0;">
                                                     <pre>
-                                                        HILO STRONGFEST   HILO STRONGFEST   HILO STRONGFEST   HILO STRONGFEST
+                                                        HILO STRONGFEST   HILO STRONGFEST   HILO STRONGFEST
                                                     </pre>
                                                 </div>
                                             </td>
@@ -79,12 +79,12 @@
                                             <!-- Tiket Atas -->
                                             <td style="padding: 20px; font-size: 14px;">
                                                 <p style="margin: 0 0 8px 0;">Hi, <strong>{{ $ticket->user->name }}</strong></p>
-                                                <p style="margin: 0 0 16px 0; font-weight: bold;">Selamat! Pembayaran kamu sudah berhasil kami terima.</p>
+                                                <p style="margin: 0 0 16px 0; font-weight: bold;">Selamat! Order kamu sudah berhasil kami terima.</p>
 
                                                 <p style="margin: 0 0 8px 0;"><strong>HILO STRONGFEST</strong></p>
 
                                                 <!-- Garis Potong dan Lekukan -->
-                                                ------------------------------------------------------------------
+                                                -----------------------------------------------------------
 
                                                 <table width="100%" style="margin-bottom: 20px;">
                                                     <tr>
