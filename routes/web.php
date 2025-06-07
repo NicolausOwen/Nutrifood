@@ -12,6 +12,10 @@ Route::get('/', function () {
 Route::get('/dashboard', [TicketController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/dashboard/ticket', [TicketController::class, 'dashboard2'])->middleware(['auth', 'verified'])->name('dashboard2');
 
+Route::get('/cek-email', function () {
+    return env('MAIL_FROM_ADDRESS');
+});
+
 require __DIR__.'/auth.php';
 
 Route::fallback(function(){
