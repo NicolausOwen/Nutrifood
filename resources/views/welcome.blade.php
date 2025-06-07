@@ -52,7 +52,7 @@
         <div>
             <h2 class="text-3xl font-extrabold text-black-100 text-center mb-5">EVENT LOCATION</h2>
         </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-[70px] items-center"> 
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-[70px] items-center">
        <div class="flex justify-content-auto gap-[3%] mt-[7%]" data-aos="fade-right" data-aos-duration="1000">
              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1893.6431893261731!2d104.74015336954795!3d-2.977309999812416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3b75e7e673b969%3A0x83a46f5d2cfc08c1!2sAryaduta%20Palembang!5e1!3m2!1sid!2sid!4v1749048958690!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
        </div>
@@ -87,7 +87,7 @@
     <!-- COLLABORATION -->
      <section class="py-24">
        <!-- ELEMENT Terajang -->
-       <img src="{{ asset('images/tendang.png') }}" class="absolute opacity-10 w-[65vw] right-[-8vw] top-[65vh]" alt="">
+       <img src="{{ asset('images/tendang.png') }}" class="absolute opacity-10 w-[50vw] right-[2vw] top-[65vh]" alt="">
        <!-- ELEMENT TERAJANG -->
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-[70px] items-center">
@@ -113,7 +113,7 @@
     <section class="py-24">
        <!-- ELEMENT BARBEL -->
        <img src="{{ asset('images/excecise 1.png') }}" class="absolute opacity-10 left-[-25vw] w-[60vw] top-[150vh]" alt="">
-       <img src="{{ asset('images/excercise 2.png') }}" class="absolute opacity-10 w-[60vw] right-[-18vw] top-[220vh] " alt="">
+       <img src="{{ asset('images/excercise 2.png') }}" class="absolute opacity-10 w-[50vw] right-[2vw] top-[220vh] " alt="">
        <!-- ELEMENT BARBEL -->
         <div data-aos="fade-up" data-aos-duration="1000">
             <h2 class="text-5xl font-extrabold text-black-800 text-center mb-5 py-12">Our Social Media</h2>
