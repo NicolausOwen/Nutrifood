@@ -55,13 +55,13 @@ class TicketResource extends Resource
                     ->label('Nama')
                     ->searchable(),
                 Tables\Columns\BooleanColumn::make('masuk')
-                    ->label('Masuk')
+                    ->label('Check-In')
+                    ->sortable(),
+                Tables\Columns\BooleanColumn::make('checkup')
+                    ->label('Race-Pack')
                     ->sortable(),
                 Tables\Columns\BooleanColumn::make('makan')
                     ->label('Makan')
-                    ->sortable(),
-                Tables\Columns\BooleanColumn::make('checkup')
-                    ->label('Checkup')
                     ->sortable(),
             ])
             ->filters([
